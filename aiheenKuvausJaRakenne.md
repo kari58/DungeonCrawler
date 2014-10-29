@@ -33,7 +33,7 @@
 * Ruudut: Seinät ja lattiat, portaat
 * Ei saa luoda umpikujia
 
-**Taidot ja loitsut: ** 
+**Taidot ja loitsut:** 
 
 * Ainakin pari eri loitsua kuten parannus ja maaginen hyökkäys
 
