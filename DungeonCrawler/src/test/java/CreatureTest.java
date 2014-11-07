@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 public class CreatureTest {
     
     private Monster monster;
+    private Square square;
     
     public CreatureTest() {
     }
@@ -35,7 +36,7 @@ public class CreatureTest {
     
     @Before
     public void setUp() {
-        Square square = new Square(1, 1);
+        square = new Square(1, 1);
         monster = new Monster(square, true, "m", 50, 10);
     }
     
@@ -78,9 +79,14 @@ public class CreatureTest {
     }
     
     @Test
+    public void healthCannotBeLowerThanZero() {
+        monster.takeDamage(100);
+        assertEquals(monster.getCurrentHealth(), 0);
+    }
+    
+    @Test
     public void squareIsCorrectAfterCreation() {
-        assertEquals(monster.getSquare().getX(), 1);
-        assertEquals(monster.getSquare().getY(), 1);
+        assertEquals(monster.getSquare(), square);
     }
     
     @Test
