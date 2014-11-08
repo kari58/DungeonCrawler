@@ -8,12 +8,8 @@ public abstract class Creature extends GameObject {
     private int currentHealth;
     private int damage;
 
-    public Creature(Square square, boolean hostileStatus, String symbol, int maxHealth, int damage) {
-        super(symbol);
-        if (square == null) {
-            throw new IllegalArgumentException("Starting for creature square cannot be null");
-        }
-        this.square = square;
+    public Creature(boolean walkable, boolean hostileStatus, String symbol, int maxHealth, int damage) {
+        super(walkable, symbol);
         this.isHostile = hostileStatus;
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;

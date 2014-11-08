@@ -4,10 +4,12 @@ public abstract class GameObject {
 
     // all gameobjects have a symbol which is displayed on the map
     String symbol;
+    boolean walkable;
 
-    public GameObject(String symbol) {
+    public GameObject(boolean walkable, String symbol) {
         checkThatArgumentIsNotNull(symbol);
         this.symbol = symbol;
+        this.walkable = walkable;
     }
 
     public String getSymbol() {

@@ -46,21 +46,21 @@ public class SquareTest {
     
     @Test
     public void canSetEntityOnSquare() {
-        Creature m = new Monster(square, true, "m", 100, 10);
+        Creature m = new Monster(true, "m", 100, 10);
         assertNotNull(m);
-        square.setEntity(m);
-        assertNotNull(square.getEntity());
-        Creature x = (Creature) square.getEntity();
+        square.setCreatureOnSquare(m);
+        assertNotNull(square.getCreatureOnSquare());
+        Creature x = square.getCreatureOnSquare();
         assertEquals(x, m);
     }
     
     @Test
     public void removeEntityWorks() {
-        Creature m = new Monster(square, true, "m", 100, 10);
-        square.setEntity(m);
-        assertNotNull(square.getEntity());
-        square.removeEntity();
-        assertNull(square.getEntity());
+        Creature m = new Monster(true, "m", 100, 10);
+        square.setCreatureOnSquare(m);
+        assertNotNull(square.getCreatureOnSquare());
+        square.removeCreatureOnSquare();
+        assertNull(square.getCreatureOnSquare());
     }
     
     

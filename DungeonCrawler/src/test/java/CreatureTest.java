@@ -37,7 +37,8 @@ public class CreatureTest {
     @Before
     public void setUp() {
         square = new Square(1, 1);
-        monster = new Monster(square, true, "m", 50, 10);
+        monster = new Monster(true, "m", 50, 10);
+        monster.setSquare(square);
     }
     
     @Test
@@ -85,14 +86,14 @@ public class CreatureTest {
     }
     
     @Test
-    public void squareIsCorrectAfterCreation() {
+    public void settingSquareWorks() {
         assertEquals(monster.getSquare(), square);
     }
     
     @Test
     public void hostileStatusIsCorrectAfterCreation() {
         assertEquals(monster.isUnitHostile(), true);
-        Monster otherMonster = new Monster(new Square(1,1), false, "m", 50, 10);
+        Monster otherMonster = new Monster(false, "m", 50, 10);
         assertEquals(otherMonster.isUnitHostile(), false);
     }
     

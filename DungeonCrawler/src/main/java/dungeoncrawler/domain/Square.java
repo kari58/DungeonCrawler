@@ -4,21 +4,38 @@ public class Square extends GameObject {
 
     private final int x;
     private final int y;
-    private GameObject entityOnSquare;
+    private GameObject objectOnSquare; // includes non-creature objects like walls, stairs etc.
+    private Creature creatureOnSquare;
 
     public Square(int x, int y) {
-        super(".");
+        super(true, ".");
         this.x = x;
         this.y = y;
 
     }
 
-    public GameObject getEntity() {
-        return entityOnSquare;
+    public Creature getCreatureOnSquare() {
+        return creatureOnSquare;
     }
 
-    public void setEntity(GameObject entity) {
-        this.entityOnSquare = entity;
+    public void setCreatureOnSquare(Creature creatureOnSquare) {
+        this.creatureOnSquare = creatureOnSquare;
+    }
+    
+    public void removeCreatureOnSquare() {
+        this.creatureOnSquare = null;
+    }
+
+    public GameObject getObjectOnSquare() {
+        return objectOnSquare;
+    }
+
+    public void setObjectOnSquare(GameObject object) {
+        this.objectOnSquare = object;
+    }
+    
+    public void removeObjectOnSquare() {
+        this.objectOnSquare = null;
     }
 
     public int getX() {
@@ -29,8 +46,6 @@ public class Square extends GameObject {
         return y;
     }
 
-    public void removeEntity() {
-        entityOnSquare = null;
-    }
+    
 
 }
