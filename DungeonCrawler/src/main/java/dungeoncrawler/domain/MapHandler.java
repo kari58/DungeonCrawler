@@ -2,6 +2,9 @@
 
 package dungeoncrawler.domain;
 
+import dungeoncrawler.creature.Creature;
+import dungeoncrawler.gameobject.Wall;
+import dungeoncrawler.gameobject.Square;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

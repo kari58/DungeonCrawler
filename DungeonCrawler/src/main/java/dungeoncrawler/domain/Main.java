@@ -2,6 +2,9 @@
 
 package dungeoncrawler.domain;
 
+import dungeoncrawler.creature.Creature;
+import dungeoncrawler.creature.Monster;
+import dungeoncrawler.gameobject.Square;
 import java.util.ArrayList;
 import java.util.List;
 
