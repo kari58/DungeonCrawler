@@ -1,6 +1,8 @@
-
-
 package dungeoncrawler.creature;
+
+
+
+
 
 
 public class NPC extends Creature {

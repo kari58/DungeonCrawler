@@ -1,6 +1,8 @@
-
-
 package dungeoncrawler.gameobject;
+
+
+
+
 
 
 public class Wall extends GameObject {

@@ -1,5 +1,7 @@
 package dungeoncrawler.gameobject;
 
+
+
 import dungeoncrawler.creature.Creature;
 
 public class Square extends GameObject {

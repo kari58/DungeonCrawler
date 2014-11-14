@@ -1,19 +1,19 @@
 package dungeoncrawler.creature;
 
+
+
 import dungeoncrawler.gameobject.GameObject;
 import dungeoncrawler.gameobject.Square;
 
 public abstract class Creature extends GameObject {
 
     private Square square;
-    private boolean isHostile;
     private int maxHealth;
     private int currentHealth;
     private int damage;
 
     public Creature(String name, String symbol) {
         super(false, name, symbol);
-        this.isHostile = true;
         this.maxHealth = 100;
         this.currentHealth = maxHealth;
         this.damage = 5;
@@ -63,12 +63,6 @@ public abstract class Creature extends GameObject {
 
     abstract public void move();
 
-    public void setHostileStatus(boolean hostileStatus) {
-        this.isHostile = hostileStatus;
-    }
-
-    public boolean isUnitHostile() {
-        return isHostile;
-    }
+    
 
 }

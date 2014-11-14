@@ -1,5 +1,7 @@
 package dungeoncrawler.gameobject;
 
+
+
 public abstract class GameObject {
 
     // all gameobjects have a symbol which is displayed on the map
@@ -23,6 +25,10 @@ public abstract class GameObject {
     
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+    
+    public boolean isWalkable() {
+        return walkable;
     }
 
     
