@@ -67,7 +67,7 @@ public class MapHandler {
 
     private List<Square> getUnoccupiedSquares(Square[][] map, boolean includeSquaresWithWalkableObjects) {
         List<Square> unoccupiedSquares = new ArrayList<>();
-                for (Square[] squares : map) {
+        for (Square[] squares : map) {
             for (Square square : squares) {
                 if (square.getObjectOnSquare() == null && square.getCreatureOnSquare() == null) {
                     unoccupiedSquares.add(square);
@@ -84,7 +84,7 @@ public class MapHandler {
 
     private Square[][] populateMapWithMonsters(Square[][] map, List<Creature> monsters) {
         List<Square> squaresToPopulate = getUnoccupiedSquares(map, true);
-        
+
         while (monsters.size() > squaresToPopulate.size()) { // if there are more monsters to be spawned than possible squares to spawn monsters on, remove extra monsters
             monsters.remove(monsters.size() - 1);
         }
