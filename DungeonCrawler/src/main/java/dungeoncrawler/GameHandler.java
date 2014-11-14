@@ -18,10 +18,15 @@ public class GameHandler {
     public void run() {
         initGame();
         runGameLoop();
+        handleGameEnd();
     }
 
     private void initGame() {
         
+    }
+    
+    private void handleGameEnd() {
+        System.out.println("You be dead!");
     }
 
     private void runGameLoop() {
@@ -29,7 +34,7 @@ public class GameHandler {
             ui.drawMap(map);
             player.takeDamage(10);
         }
-        System.out.println("You be dead!");
+        
     }
 
 }

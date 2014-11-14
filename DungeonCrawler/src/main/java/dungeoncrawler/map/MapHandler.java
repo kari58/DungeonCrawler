@@ -13,11 +13,11 @@ import java.util.Random;
 public class MapHandler {
 
     private final LevelData levelData;
-    private final MonsterGenerator monsterHandler;
+    private final MonsterGenerator monsterGenerator;
 
     public MapHandler() {
         this.levelData = new LevelData();
-        this.monsterHandler = new MonsterGenerator();
+        this.monsterGenerator = new MonsterGenerator();
     }
 
     public Square[][] createNewMap(Player player) {
@@ -25,7 +25,7 @@ public class MapHandler {
         Square[][] map = initMap(levelData.getLevelSizeX(), levelData.getLevelSizeY());
         map = addStairsToMap(map);
         map = addPlayerToMap(map, player);
-        List<Creature> monsters = monsterHandler.getMonstersForLevel(levelData);
+        List<Creature> monsters = monsterGenerator.getMonstersForLevel(levelData);
         map = populateMapWithMonsters(map, monsters);
         return map;
 
@@ -67,8 +67,7 @@ public class MapHandler {
 
     private List<Square> getUnoccupiedSquares(Square[][] map, boolean includeSquaresWithWalkableObjects) {
         List<Square> unoccupiedSquares = new ArrayList<>();
-        // iterate through every square in the map and add each square to a list from which a square can be randomly assigned to spawned monsters
-        for (Square[] squares : map) {
+                for (Square[] squares : map) {
             for (Square square : squares) {
                 if (square.getObjectOnSquare() == null && square.getCreatureOnSquare() == null) {
                     unoccupiedSquares.add(square);
@@ -85,7 +84,7 @@ public class MapHandler {
 
     private Square[][] populateMapWithMonsters(Square[][] map, List<Creature> monsters) {
         List<Square> squaresToPopulate = getUnoccupiedSquares(map, true);
-        // iterate through every square in the map and add each square to a list from which a square can be randomly assigned to spawned monsters
+        
         while (monsters.size() > squaresToPopulate.size()) { // if there are more monsters to be spawned than possible squares to spawn monsters on, remove extra monsters
             monsters.remove(monsters.size() - 1);
         }
