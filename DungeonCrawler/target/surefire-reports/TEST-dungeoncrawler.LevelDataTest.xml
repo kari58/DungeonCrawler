@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="dungeoncrawler.NPCTest" time="0.007" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="dungeoncrawler.LevelDataTest" time="0.059" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_20\jre\bin"/>
@@ -63,13 +63,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dungeoncrawler.NPCTest" name="symbolIsCorrectAfterCreation" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="settingSymbolWorks" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="maxHealthIsCorrectAfterCreation" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="takingDamageWorks" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="cannotTakeNegativeDamage" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="healthCannotBeLowerThanZero" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="settingSquareWorks" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="canSetHostileStatus" time="0"/>
-  <testcase classname="dungeoncrawler.NPCTest" name="currentHealthIsCorrectAfterCreation" time="0.003"/>
+  <testcase classname="dungeoncrawler.LevelDataTest" name="monsterDifficultyIncreasesCorrectly" time="0.001"/>
+  <testcase classname="dungeoncrawler.LevelDataTest" name="numberOfMonstersAlwaysIncreasesByTwo" time="0"/>
+  <testcase classname="dungeoncrawler.LevelDataTest" name="numberOfMonstersDoesNotIncreaseIndefinitely" time="0"/>
+  <testcase classname="dungeoncrawler.LevelDataTest" name="increasingLevelCounterWorks" time="0"/>
 </testsuite>

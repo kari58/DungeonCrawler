@@ -42,6 +42,11 @@ public class SquareTest {
     }
     
     @Test
+    public void squaresAreWalkable() {
+        assertTrue(square.isWalkable());
+    }
+    
+    @Test
     public void coordinatesAreCorrectAfterCreation() {
         assertEquals(square.getX(), 2);
         assertEquals(square.getY(), 2);

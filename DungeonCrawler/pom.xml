@@ -48,9 +48,7 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>dungeoncrawler.domain.*</param>
-                        <param>dungeoncrawler.gameobject.*</param>
-                        <param>dungeoncrawler.creature.*</param>
+                        <param>dungeoncrawler.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>dungeoncrawler.*</param>

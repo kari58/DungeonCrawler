@@ -78,7 +78,7 @@ public class NPCTest {
     
     @Test
     public void healthCannotBeLowerThanZero() {
-        monster.takeDamage(100);
+        monster.takeDamage(monster.getMaxHealth() + 10);
         assertEquals(monster.getCurrentHealth(), 0);
     }
     
@@ -90,7 +90,7 @@ public class NPCTest {
     @Test
     public void canSetHostileStatus() {
         monster.setHostileStatus(false);
-        assertEquals(monster.isUnitHostile(), false);
+        assertEquals(monster.isHostile(), false);
     }
     
     

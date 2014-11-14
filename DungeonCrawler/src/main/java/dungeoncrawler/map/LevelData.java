@@ -14,13 +14,12 @@ public class LevelData {
     }
     
     
-    public int getNumberOfRoomsInLevel() {
-        // Clamped value (1 = minimum, 6 = maximum)
-        return Math.max(1, Math.min(6, currentLevel));
-    }
-    
     public void increaseLevelCounter() {
         currentLevel++;
+    }
+    
+    public int getCurrentLevel() {
+        return currentLevel;
     }
     
     public int getNumberOfMonstersOnLevel() {
@@ -28,7 +27,7 @@ public class LevelData {
     }
     
     public float getMonsterDifficultyMultiplier() {
-        return currentLevel * 1.2f;
+        return 1 + (currentLevel * 1.2f / 10);
     }
     
     public int getLevelSizeX() {

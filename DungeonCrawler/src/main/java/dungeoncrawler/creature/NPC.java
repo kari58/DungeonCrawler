@@ -21,15 +21,18 @@ public class NPC extends Creature {
     }
     
     public void setAggroRadius(int radius) {
-        aggroRadius = radius;
-        
+        aggroRadius = radius;       
+    }
+    
+    public int getAggroRadius() {
+        return aggroRadius;
     }
     
     public void setHostileStatus(boolean hostileStatus) {
         this.isHostile = hostileStatus;
     }
 
-    public boolean isUnitHostile() {
+    public boolean isHostile() {
         return isHostile;
     }
 

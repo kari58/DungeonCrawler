@@ -13,11 +13,11 @@ import java.util.Random;
 public class MapHandler {
 
     private final LevelData levelData;
-    private final MonsterHandler monsterHandler;
+    private final MonsterGenerator monsterHandler;
 
     public MapHandler() {
         this.levelData = new LevelData();
-        this.monsterHandler = new MonsterHandler();
+        this.monsterHandler = new MonsterGenerator();
     }
 
     public Square[][] createNewMap(Player player) {
@@ -52,18 +52,6 @@ public class MapHandler {
 
     // Creates a map matching the requested size
     private Square[][] initMap(int sizeX, int sizeY) {
-        if (sizeX < 5) {
-            sizeX = 5;
-        }
-        if (sizeY < 5) {
-            sizeY = 5;
-        }
-        if (sizeX > 30) {
-            sizeX = 30;
-        }
-        if (sizeY > 30) {
-            sizeY = 30;
-        }
         Square[][] newMap = new Square[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
