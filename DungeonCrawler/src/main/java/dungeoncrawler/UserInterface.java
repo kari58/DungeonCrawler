@@ -1,20 +1,18 @@
-
-
 package dungeoncrawler;
 
 import dungeoncrawler.gameobject.Square;
 import dungeoncrawler.map.Map;
 import java.util.Scanner;
 
-
 public class UserInterface {
-    
+
     private Scanner scanner;
-    
+
     public UserInterface() {
         scanner = new Scanner(System.in);
+
     }
-    
+
     public void drawMap(Map mapObject) {
         Square[][] map = mapObject.getMap();
         for (Square[] squares : map) {
@@ -28,8 +26,7 @@ public class UserInterface {
                 }
             }
             System.out.println("");
-        }        
+        }
     }
-    
 
 }
