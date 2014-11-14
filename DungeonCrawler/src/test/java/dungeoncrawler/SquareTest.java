@@ -7,8 +7,9 @@ package dungeoncrawler;
  */
 import dungeoncrawler.creature.Creature;
 import dungeoncrawler.gameobject.GameObject;
-import dungeoncrawler.creature.Monster;
+import dungeoncrawler.creature.NPC;
 import dungeoncrawler.gameobject.Square;
+import dungeoncrawler.gameobject.Wall;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,9 +48,8 @@ public class SquareTest {
     }
     
     @Test
-    public void canSetEntityOnSquare() {
-        Creature m = new Monster(true, "m", 100, 10);
-        assertNotNull(m);
+    public void canSetCreatureOnSquare() {
+        Creature m = new NPC("creature", "m");
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         Creature x = square.getCreatureOnSquare();
@@ -57,12 +57,30 @@ public class SquareTest {
     }
     
     @Test
-    public void removeEntityWorks() {
-        Creature m = new Monster(true, "m", 100, 10);
+    public void removeCreatureWorks() {
+        Creature m = new NPC("creature", "m");
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         square.removeCreatureOnSquare();
         assertNull(square.getCreatureOnSquare());
+    }
+    
+    @Test
+    public void canSetObjectOnSquare() {
+        GameObject m = new Wall();
+        square.setObjectOnSquare(m);
+        assertNotNull(square.getObjectOnSquare());
+        GameObject x = square.getObjectOnSquare();
+        assertEquals(x, m);
+    }
+    
+    @Test
+    public void removeObjectWorks() {
+        GameObject m = new Wall();
+        square.setObjectOnSquare(m);
+        assertNotNull(square.getObjectOnSquare());
+        square.removeObjectOnSquare();
+        assertNull(square.getObjectOnSquare());
     }
     
     

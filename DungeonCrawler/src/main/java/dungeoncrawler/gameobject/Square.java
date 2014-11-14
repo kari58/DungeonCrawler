@@ -10,7 +10,7 @@ public class Square extends GameObject {
     private Creature creatureOnSquare;
 
     public Square(int x, int y) {
-        super(true, ".");
+        super(true, "square", ".");
         this.x = x;
         this.y = y;
 

@@ -11,12 +11,12 @@ public abstract class Creature extends GameObject {
     private int currentHealth;
     private int damage;
 
-    public Creature(boolean walkable, boolean hostileStatus, String symbol, int maxHealth, int damage) {
-        super(walkable, symbol);
-        this.isHostile = hostileStatus;
-        this.maxHealth = maxHealth;
+    public Creature(String name, String symbol) {
+        super(false, name, symbol);
+        this.isHostile = true;
+        this.maxHealth = 100;
         this.currentHealth = maxHealth;
-        this.damage = damage;
+        this.damage = 5;
     }
 
     public void setSquare(Square square) {

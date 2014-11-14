@@ -6,7 +6,7 @@ package dungeoncrawler;
  * and open the template in the editor.
  */
 import dungeoncrawler.creature.Creature;
-import dungeoncrawler.creature.Monster;
+import dungeoncrawler.creature.NPC;
 import dungeoncrawler.gameobject.Square;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class CreatureTest {
     
-    private Monster monster;
+    private NPC monster;
     private Square square;
     
     public CreatureTest() {
@@ -39,7 +39,7 @@ public class CreatureTest {
     @Before
     public void setUp() {
         square = new Square(1, 1);
-        monster = new Monster(true, "m", 50, 10);
+        monster = new NPC("monster", "m");
         monster.setSquare(square);
     }
     
@@ -90,13 +90,6 @@ public class CreatureTest {
     @Test
     public void settingSquareWorks() {
         assertEquals(monster.getSquare(), square);
-    }
-    
-    @Test
-    public void hostileStatusIsCorrectAfterCreation() {
-        assertEquals(monster.isUnitHostile(), true);
-        Monster otherMonster = new Monster(false, "m", 50, 10);
-        assertEquals(otherMonster.isUnitHostile(), false);
     }
     
     @Test

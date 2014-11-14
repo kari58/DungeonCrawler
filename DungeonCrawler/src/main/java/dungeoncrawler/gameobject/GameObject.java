@@ -5,27 +5,25 @@ public abstract class GameObject {
     // all gameobjects have a symbol which is displayed on the map
     String symbol;
     boolean walkable;
+    String name;
 
-    public GameObject(boolean walkable, String symbol) {
-        checkThatArgumentIsNotNull(symbol);
+    public GameObject(boolean walkable, String name, String symbol) {
         this.symbol = symbol;
         this.walkable = walkable;
+        this.name = name;
     }
 
     public String getSymbol() {
         return symbol;
     }
-
-    public void setSymbol(String symbol) {
-        checkThatArgumentIsNotNull(symbol);
-        this.symbol = symbol;
-        
+    
+    public String getName() {
+        return name;
     }
     
-    private void checkThatArgumentIsNotNull(String symbol) {
-        if (symbol == null) {
-            throw new IllegalArgumentException ("Cannot set null as symbol for object");
-        }
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
+    
 }
