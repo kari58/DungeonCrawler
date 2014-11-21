@@ -1,15 +1,19 @@
 package dungeoncrawler.map;
 
-import dungeoncrawler.creature.Creature;
-import dungeoncrawler.creature.NPC;
-import dungeoncrawler.creature.Player;
+import dungeoncrawler.gameobject.creature.Creature;
+import dungeoncrawler.gameobject.creature.NPC;
+import dungeoncrawler.gameobject.creature.Player;
 import dungeoncrawler.gameobject.Wall;
-import dungeoncrawler.gameobject.Square;
 import dungeoncrawler.gameobject.Stairs;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class contains the logic necessary for creating maps. The map itself is
+ * not contained within the class, but the class can generate maps.
+ *
+ */
 public class MapHandler {
 
     private final LevelData levelData;
@@ -20,6 +24,16 @@ public class MapHandler {
         this.monsterGenerator = new MonsterGenerator();
     }
 
+    /**
+     * This method generates a new map consisting of Square objects. Each time
+     * this method is called, the level counter is incremented by one. Each
+     * subsequent call of this method increases the level difficulty. The method
+     * should be called only once per map level.
+     *
+     * @param player reference to the player object so that the player can be
+     * added to the map
+     * @return a 2-dimensional array of Square objects, representing the map.
+     */
     public Square[][] createNewMap(Player player) {
         levelData.increaseLevelCounter();
         Square[][] map = initMap(levelData.getLevelSizeX(), levelData.getLevelSizeY());
@@ -76,7 +90,6 @@ public class MapHandler {
                         unoccupiedSquares.add(square);
                     }
                 }
-
             }
         }
         return unoccupiedSquares;

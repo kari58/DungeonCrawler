@@ -1,18 +1,26 @@
 package dungeoncrawler.map;
 
-
-
-
-
-import dungeoncrawler.creature.Creature;
-import dungeoncrawler.creature.NPC;
+import dungeoncrawler.gameobject.creature.Creature;
+import dungeoncrawler.gameobject.creature.NPC;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * This class provides methods that can be used to generate monsters to be used
+ * on each level.
+ */
 public class MonsterGenerator {
-    
+
+    /**
+     * Generates a list of randomly created monsters. The amount of monsters to
+     * be created is specified within the levelData object and depends on the
+     * current map level.
+     *
+     * @param levelData reference to the levelData object which stores
+     * information on current level and level difficulty
+     * @return a list of randomly created monsters
+     */
     public List<Creature> getMonstersForLevel(LevelData levelData) {
         List<Creature> monsters = new ArrayList<>();
         int monsterAmount = levelData.getNumberOfMonstersOnLevel();
@@ -22,7 +30,19 @@ public class MonsterGenerator {
         }
         return monsters;
     }
-    
+
+    /**
+     * Creates a random monster. The monster has a random amount of health and
+     * damage, as well as a variable aggro radius. All stats are also multiplied
+     * by the level difficulty multiplier which is determined in the levelData
+     * object, so that on each level monsters get tougher. On average, one third
+     * of monsters are not hostile.
+     *
+     * @param levelData reference to the levelData object which stores
+     * information on current level and level difficulty
+     * @return returns an NPC object which represents a randomly generated
+     * monster
+     */
     public NPC createRandomMonster(LevelData levelData) {
         Random rng = new Random();
         float difficultymultiplier = levelData.getMonsterDifficultyMultiplier();
@@ -46,7 +66,7 @@ public class MonsterGenerator {
         monster.setDamage(monsterDamage);
         return monster;
     }
-    
+
     private String getNameForMonster() {
         return "monster";
     }

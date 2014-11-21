@@ -5,7 +5,7 @@
  */
 package dungeoncrawler.map;
 
-import dungeoncrawler.creature.NPC;
+import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.map.LevelData;
 import dungeoncrawler.map.MonsterGenerator;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class MonsterGeneratorTest {
     }
 
     @Test
-    public void statRandomizationWorks() {
+    public void statsAreRandomized() {
         List<NPC> monsters = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
             monsters.add(mh.createRandomMonster(ld));
@@ -114,7 +114,7 @@ public class MonsterGeneratorTest {
     }
     
     @Test
-    public void hostileMonstersAlwaysHaveCorrectSymbol() {
+    public void monstersAlwaysHaveCorrectSymbolDependingOnHostileStatus() {
         for (int i = 0; i < 50; i++) {
             NPC monster = mh.createRandomMonster(ld);
             if (monster.isHostile()) {

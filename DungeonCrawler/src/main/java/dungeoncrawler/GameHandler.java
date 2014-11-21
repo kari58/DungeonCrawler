@@ -1,8 +1,11 @@
 package dungeoncrawler;
 
 import dungeoncrawler.map.Map;
-import dungeoncrawler.creature.Player;
+import dungeoncrawler.gameobject.creature.Player;
 
+/**
+ * This class contains the logic for running the game loop at the highest level.
+ */
 public class GameHandler {
 
     private Map map;

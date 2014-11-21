@@ -5,8 +5,7 @@ package dungeoncrawler.map;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import dungeoncrawler.creature.Player;
-import dungeoncrawler.gameobject.Square;
+import dungeoncrawler.gameobject.creature.Player;
 import dungeoncrawler.map.MapHandler;
 import org.junit.After;
 import org.junit.AfterClass;

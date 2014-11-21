@@ -4,4 +4,5 @@
 7.11.2014: 22:00 - 24:00 Koodausta, Luokkakaavion teko, Creature-luokan testien teko 2h
 14.11.2014: 16:00 - 22:30 Koodausta, levelientuottamislogiikan teko, player ja npc-luokkien säätöä, uusia testejä 6,5h
 14.11.2014: 23:00 - 24:00 Lueskelua spritejen piirtämiseen ja key listeneriin liittyen
+21.11.2014: 21:00 - Javadoc alotettu ja koodailua
 Total: 14,5h

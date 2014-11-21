@@ -1,6 +1,6 @@
 package dungeoncrawler;
 
-import dungeoncrawler.gameobject.Square;
+import dungeoncrawler.map.Square;
 import dungeoncrawler.map.Map;
 import java.util.Scanner;
 

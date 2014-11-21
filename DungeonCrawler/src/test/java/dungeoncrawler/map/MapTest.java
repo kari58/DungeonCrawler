@@ -5,8 +5,7 @@
  */
 package dungeoncrawler.map;
 
-import dungeoncrawler.creature.Player;
-import dungeoncrawler.gameobject.Square;
+import dungeoncrawler.gameobject.creature.Player;
 import dungeoncrawler.map.Map;
 import org.junit.After;
 import org.junit.AfterClass;

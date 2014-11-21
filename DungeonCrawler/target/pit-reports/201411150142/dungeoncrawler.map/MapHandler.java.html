@@ -1,0 +1,1567 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>MapHandler.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_1'></a>
+</td>
+<td class=''><pre><span  class=''>package dungeoncrawler.map;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_2'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_3'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.creature.Creature;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_4'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.creature.NPC;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_5'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.creature.Player;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_6'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.gameobject.Wall;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_7'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.gameobject.Square;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_8'></a>
+</td>
+<td class=''><pre><span  class=''>import dungeoncrawler.gameobject.Stairs;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_9'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_10'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_11'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.Random;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_12'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_13'></a>
+</td>
+<td class=''><pre><span  class=''>public class MapHandler {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_14'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_15'></a>
+</td>
+<td class=''><pre><span  class=''>    private final LevelData levelData;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_16'></a>
+</td>
+<td class=''><pre><span  class=''>    private final MonsterGenerator monsterGenerator;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_17'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_18'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public MapHandler() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_19'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.levelData = new LevelData();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_20'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.monsterGenerator = new MonsterGenerator();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_21'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_22'/>
+22
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_22'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_23'></a>
+</td>
+<td class=''><pre><span  class=''>    public Square[][] createNewMap(Player player) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_24'/>
+24
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_24'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        levelData.increaseLevelCounter();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_25'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Square[][] map = initMap(levelData.getLevelSizeX(), levelData.getLevelSizeY());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_26'></a>
+</td>
+<td class='covered'><pre><span  class=''>        map = addStairsToMap(map);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_27'/>
+27
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_27'></a>
+</td>
+<td class='covered'><pre><span  class=''>        map = addPlayerToMap(map, player);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_28'/>
+28
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_28'></a>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Creature&#62; monsters = monsterGenerator.getMonstersForLevel(levelData);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_29'></a>
+</td>
+<td class='covered'><pre><span  class=''>        map = populateMapWithMonsters(map, monsters);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_30'/>
+30
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_30'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return map;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_31'/>
+31
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_31'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_32'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_33'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_34'/>
+34
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_34'></a>
+</td>
+<td class=''><pre><span  class=''>    private Square[][] addStairsToMap(Square[][] map) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_35'/>
+35
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_35'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Square stairsSquare = pickRandomUnOccupiedSquare(map, false);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_36'/>
+36
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_36'>1</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        stairsSquare.setObjectOnSquare(new Stairs());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_37'/>
+37
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_37'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return map;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_38'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_39'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_40'></a>
+</td>
+<td class=''><pre><span  class=''>    private Square[][] addPlayerToMap(Square[][] map, Player player) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_41'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Square playerSquare = pickRandomUnOccupiedSquare(map, true);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_42'/>
+42
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_42'>1</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        playerSquare.setCreatureOnSquare(player);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_43'/>
+43
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_43'>1</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        player.setSquare(playerSquare);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_44'/>
+44
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_44'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return map;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_45'/>
+45
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_45'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_46'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_47'></a>
+</td>
+<td class=''><pre><span  class=''>    private Square pickRandomUnOccupiedSquare(Square[][] map, boolean squareCanContainAWalkableObject) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_48'/>
+48
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_48'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Random rng = new Random();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_49'/>
+49
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_49'></a>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Square&#62; squares = getUnoccupiedSquares(map, squareCanContainAWalkableObject);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_50'/>
+50
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_50'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return squares.get(rng.nextInt(squares.size()));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_51'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_52'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_53'/>
+53
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_53'></a>
+</td>
+<td class=''><pre><span  class=''>    // Creates a map matching the requested size</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_54'/>
+54
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_54'></a>
+</td>
+<td class=''><pre><span  class=''>    private Square[][] initMap(int sizeX, int sizeY) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_55'/>
+55
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_55'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Square[][] newMap = new Square[sizeX][sizeY];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_56'/>
+56
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_56'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int y = 0; y &#60; sizeY; y++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_57'/>
+57
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_57'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (int x = 0; x &#60; sizeX; x++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_58'/>
+58
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_58'></a>
+</td>
+<td class='covered'><pre><span  class=''>                Square square = new Square(x, y);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_59'/>
+59
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_59'></a>
+</td>
+<td class='covered'><pre><span  class=''>                newMap[x][y] = square;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_60'/>
+60
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_60'>6</a>
+</td>
+<td class='covered'><pre><span  class='survived'>                if (y == 0 || y == sizeY - 1 || x == 0 || x == sizeX - 1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_61'/>
+61
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_61'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                    square.setObjectOnSquare(new Wall());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_62'/>
+62
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_62'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_63'/>
+63
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_63'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_64'/>
+64
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_64'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_65'/>
+65
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_65'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return newMap;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_66'/>
+66
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_66'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_67'/>
+67
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_67'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_68'/>
+68
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_68'></a>
+</td>
+<td class=''><pre><span  class=''>    private List&#60;Square&#62; getUnoccupiedSquares(Square[][] map, boolean includeSquaresWithWalkableObjects) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_69'/>
+69
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_69'></a>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Square&#62; unoccupiedSquares = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_70'/>
+70
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_70'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (Square[] squares : map) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_71'/>
+71
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_71'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (Square square : squares) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_72'/>
+72
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_72'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (square.getObjectOnSquare() == null &#38;&#38; square.getCreatureOnSquare() == null) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_73'/>
+73
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_73'></a>
+</td>
+<td class='covered'><pre><span  class=''>                    unoccupiedSquares.add(square);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_74'/>
+74
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_74'>3</a>
+</td>
+<td class='covered'><pre><span  class='survived'>                } else if (includeSquaresWithWalkableObjects &#38;&#38; square.getObjectOnSquare() != null &#38;&#38; square.getCreatureOnSquare() == null) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_75'/>
+75
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_75'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                    if (square.getObjectOnSquare().isWalkable()) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_76'/>
+76
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_76'></a>
+</td>
+<td class='covered'><pre><span  class=''>                        unoccupiedSquares.add(square);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_77'/>
+77
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_77'></a>
+</td>
+<td class=''><pre><span  class=''>                    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_78'/>
+78
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_78'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_79'/>
+79
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_79'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_80'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_81'/>
+81
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_81'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_82'/>
+82
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_82'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return unoccupiedSquares;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_83'/>
+83
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_83'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_84'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_85'/>
+85
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_85'></a>
+</td>
+<td class=''><pre><span  class=''>    private Square[][] populateMapWithMonsters(Square[][] map, List&#60;Creature&#62; monsters) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_86'/>
+86
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_86'></a>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Square&#62; squaresToPopulate = getUnoccupiedSquares(map, true);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_87'/>
+87
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_87'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_88'/>
+88
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_88'>2</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        while (monsters.size() &#62; squaresToPopulate.size()) { // if there are more monsters to be spawned than possible squares to spawn monsters on, remove extra monsters</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_89'/>
+89
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_89'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            monsters.remove(monsters.size() - 1);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_90'/>
+90
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_90'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_91'/>
+91
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_91'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Random rng = new Random();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_92'/>
+92
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_92'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (Creature monster : monsters) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_93'/>
+93
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_93'></a>
+</td>
+<td class='covered'><pre><span  class=''>            Square square = squaresToPopulate.get(rng.nextInt(squaresToPopulate.size()));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_94'/>
+94
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_94'>1</a>
+</td>
+<td class='covered'><pre><span  class='survived'>            monster.setSquare(square);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_95'/>
+95
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_95'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            square.setCreatureOnSquare(monster);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_96'/>
+96
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_96'></a>
+</td>
+<td class='covered'><pre><span  class=''>            squaresToPopulate.remove(square);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_97'/>
+97
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_97'></a>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_98'/>
+98
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_98'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return map;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_99'/>
+99
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_99'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@775594f2_100'/>
+100
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_100'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_24'/> 
+
+<p class='KILLED'>removed call to dungeoncrawler/map/LevelData::increaseLevelCounter : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_30'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::createNewMap to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_36'/> 
+
+<p class='SURVIVED'>removed call to dungeoncrawler/gameobject/Square::setObjectOnSquare : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_37'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::addStairsToMap to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_42'>42</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_42'/> 
+
+<p class='SURVIVED'>removed call to dungeoncrawler/gameobject/Square::setCreatureOnSquare : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_43'>43</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_43'/> 
+
+<p class='SURVIVED'>removed call to dungeoncrawler/creature/Player::setSquare : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_44'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::addPlayerToMap to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_50'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::pickRandomUnOccupiedSquare to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_56'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_57'>57</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_57'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_60'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='SURVIVED'>Replaced integer subtraction with addition : SURVIVED</p> <p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_61'/> 
+
+<p class='KILLED'>removed call to dungeoncrawler/gameobject/Square::setObjectOnSquare : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_65'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::initMap to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_70'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_71'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_72'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_74'/> 
+
+<p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='SURVIVED'>negated conditional : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_75'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_82'>82</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_82'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::getUnoccupiedSquares to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_88'>88</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_88'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_89'>89</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_89'/> 
+
+<p class='NO_COVERAGE'>Replaced integer subtraction with addition : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_92'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_94'/> 
+
+<p class='SURVIVED'>removed call to dungeoncrawler/creature/Creature::setSquare : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_95'>95</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_95'/> 
+
+<p class='KILLED'>removed call to dungeoncrawler/gameobject/Square::setCreatureOnSquare : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@775594f2_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@775594f2_98'/> 
+
+<p class='KILLED'>mutated return of Object value for dungeoncrawler/map/MapHandler::populateMapWithMonsters to ( if (x != null) null else throw new RuntimeException ) : KILLED -> dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>dungeoncrawler.map.MapTest.dungeoncrawler.map.MapTest (1 ms)</li><li>dungeoncrawler.map.MapHandlerTest.dungeoncrawler.map.MapHandlerTest (100 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
