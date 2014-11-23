@@ -18,6 +18,14 @@ public class Map {
     public Square[][] getMap() {
         return map;
     }
+    
+    public int getWidth() {
+        return map.length;
+    }
+    
+    public int getHeight() {
+        return map[0].length;
+    }
 
     /**
      * Calls the map handler to create a new map. This method should be called

@@ -6,5 +6,5 @@
 14.11.2014: 23:00 - 24:00 Lueskelua spritejen piirtämiseen ja key listeneriin liittyen
 21.11.2014: 21:00 - 24:00 Javadoc alotettu ja koodailua
 22.11.2014: 01:30 - 03:00 lueskelua aiheeseen liittyen
-23.11.2014: 21:00 - Käyttölittymän teko aloitettu
+23.11.2014: 21:00 - Käyttölittymän teko aloitettu, liikkumisen rakentamista
 Yhteensä: 14,5h

@@ -19,10 +19,6 @@ public class Player extends Creature {
         xp = 0;
     }
 
-    @Override
-    public void move() {
-    }
-
     /**
      * This method adds experience to the player. If the player's total
      * experience exceeds the required amount of experience to level up, the

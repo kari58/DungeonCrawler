@@ -43,6 +43,7 @@ public abstract class GameObject {
         int y = this.getSquare().getY();
         g.setColor(color);
         g.fillRect(x * 30, y * 30, 30, 30);
+        
     }
 
 }

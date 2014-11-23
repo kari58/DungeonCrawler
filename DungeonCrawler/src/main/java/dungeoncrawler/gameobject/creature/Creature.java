@@ -62,6 +62,4 @@ public abstract class Creature extends GameObject {
         this.damage = damage;
     }
 
-    abstract public void move();
-
 }

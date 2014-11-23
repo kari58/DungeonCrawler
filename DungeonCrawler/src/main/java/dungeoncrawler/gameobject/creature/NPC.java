@@ -19,10 +19,6 @@ public class NPC extends Creature {
         this.aggroRadius = 2;
     }
 
-    @Override
-    public void move() {
-    }
-
     public void setAggroRadius(int radius) {
         aggroRadius = radius;
     }
