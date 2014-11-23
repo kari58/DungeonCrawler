@@ -2,17 +2,39 @@ package dungeoncrawler;
 
 import dungeoncrawler.map.Square;
 import dungeoncrawler.map.Map;
-import java.util.Scanner;
+import java.awt.Container;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
-public class UserInterface {
+public class UserInterface implements Runnable {
 
-    private Scanner scanner;
+    private JFrame frame;
+    private Map map;
+    
+    public UserInterface(Map map) {
+        this.map = map;
+    }
 
-    public UserInterface() {
-        scanner = new Scanner(System.in);
+    @Override
+    public void run() {
+        frame = new JFrame("Dungeon Crawler");
+        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        createComponents(frame.getContentPane(), map);
+
+        frame.pack();
+        frame.setVisible(true);
 
     }
 
+    private void createComponents(Container container, Map map) {
+        GraphicsHandler gh = new GraphicsHandler(map);
+        container.add(gh);
+
+    }
+/*
     public void drawMap(Map mapObject) {
         Square[][] map = mapObject.getMap();
         for (Square[] squares : map) {
@@ -27,6 +49,6 @@ public class UserInterface {
             }
             System.out.println("");
         }
-    }
+    }*/
 
 }

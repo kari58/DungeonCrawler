@@ -1,6 +1,8 @@
 package dungeoncrawler.gameobject;
 
 import dungeoncrawler.map.Square;
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  * This abstract class contains information and services common to all game
@@ -8,27 +10,20 @@ import dungeoncrawler.map.Square;
  */
 public abstract class GameObject {
 
-    String symbol;
     boolean walkable;
     String name;
     Square square;
+    Color color;
 
-    public GameObject(boolean walkable, String name, String symbol) {
-        this.symbol = symbol;
+    public GameObject(boolean walkable, String name, Color color) {
         this.walkable = walkable;
         this.name = name;
+        this.color = color;
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
 
     public String getName() {
         return name;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
     }
 
     public boolean isWalkable() {
@@ -41,6 +36,13 @@ public abstract class GameObject {
 
     public Square getSquare() {
         return square;
+    }
+    
+    public void draw(Graphics g) {
+        int x = this.getSquare().getX();
+        int y = this.getSquare().getY();
+        g.setColor(color);
+        g.fillRect(x * 30, y * 30, 30, 30);
     }
 
 }

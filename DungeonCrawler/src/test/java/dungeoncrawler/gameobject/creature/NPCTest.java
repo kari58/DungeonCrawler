@@ -8,6 +8,7 @@ package dungeoncrawler.gameobject.creature;
 import dungeoncrawler.gameobject.creature.Creature;
 import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.map.Square;
+import java.awt.Color;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,10 +40,10 @@ public class NPCTest {
     @Before
     public void setUp() {
         square = new Square(1, 1);
-        monster = new NPC("monster", "m");
+        monster = new NPC("monster", true, Color.RED);
         monster.setSquare(square);
     }
-    
+    /*
     @Test
     public void symbolIsCorrectAfterCreation() {
         assertEquals(monster.getSymbol(), "m");
@@ -52,7 +53,7 @@ public class NPCTest {
     public void settingSymbolWorks() {
         monster.setSymbol("x");
         assertEquals(monster.getSymbol(), "x");
-    }
+    }*/
     
     @Test
     public void maxHealthIsCorrectAfterCreation() {

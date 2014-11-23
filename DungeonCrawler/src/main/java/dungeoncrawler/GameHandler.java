@@ -15,30 +15,27 @@ public class GameHandler {
     public GameHandler() {
         player = new Player();
         map = new Map(player);
-        ui = new UserInterface();
+        ui = new UserInterface(map);
     }
 
-    public void run() throws InterruptedException {
-        initGame();
-        runGameLoop();
+    public void run() {
+        ui.run();
+        //runGameLoop();
         handleGameEnd();
     }
 
-    private void initGame() {
-
-    }
 
     private void handleGameEnd() {
         System.out.println("You be dead!");
     }
+    /*
+     private void runGameLoop() {
+     while (player.getCurrentHealth() > 0) {
+     ui.drawMap(map);
+     player.takeDamage(10);
 
-    private void runGameLoop() throws InterruptedException {
-        while (player.getCurrentHealth() > 0) {
-            ui.drawMap(map);
-            player.takeDamage(10);
+     }
 
-        }
-
-    }
+     }*/
 
 }

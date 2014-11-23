@@ -2,6 +2,7 @@ package dungeoncrawler.map;
 
 import dungeoncrawler.gameobject.creature.Creature;
 import dungeoncrawler.gameobject.creature.NPC;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -54,11 +55,11 @@ public class MonsterGenerator {
         int aggroRadius = rng.nextInt(4) + 1;
         int monsterHealth = (int) ((rng.nextInt(51) + 50) * difficultymultiplier);
         int monsterDamage = (int) ((rng.nextInt(5) + 6) * difficultymultiplier);
-        String symbol = "m";
+        Color color = Color.RED;
         if (!isHostile) {
-            symbol = "n";
+            color = Color.YELLOW;
         }
-        NPC monster = new NPC(name, symbol);
+        NPC monster = new NPC(name, isHostile, color);
         monster.setHostileStatus(isHostile);
         monster.setAggroRadius(aggroRadius);
         monster.setMaxHealth(monsterHealth);

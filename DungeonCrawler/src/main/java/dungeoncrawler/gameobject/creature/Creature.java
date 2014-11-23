@@ -7,6 +7,7 @@ package dungeoncrawler.gameobject.creature;
  */
 import dungeoncrawler.gameobject.GameObject;
 import dungeoncrawler.map.Square;
+import java.awt.Color;
 
 public abstract class Creature extends GameObject {
 
@@ -14,8 +15,8 @@ public abstract class Creature extends GameObject {
     private int currentHealth;
     private int damage;
 
-    public Creature(String name, String symbol) {
-        super(false, name, symbol);
+    public Creature(String name, Color color) {
+        super(false, name, color);
         this.maxHealth = 100;
         this.currentHealth = maxHealth;
         this.damage = 5;

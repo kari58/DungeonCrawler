@@ -1,5 +1,7 @@
 package dungeoncrawler.gameobject.creature;
 
+import java.awt.Color;
+
 /**
  * This class represents an NPC within the game world. Both non-hostile NPCs and
  * hostile monsters can be represented as objects of this class.
@@ -11,9 +13,9 @@ public class NPC extends Creature {
     private boolean isHostile;
     private int aggroRadius;
 
-    public NPC(String name, String symbol) {
-        super(name, symbol);
-        this.isHostile = true;
+    public NPC(String name, boolean isHostile, Color color) {
+        super(name, Color.RED);
+        this.isHostile = isHostile;
         this.aggroRadius = 2;
     }
 

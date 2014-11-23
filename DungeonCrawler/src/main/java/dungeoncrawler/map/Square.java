@@ -7,6 +7,8 @@ package dungeoncrawler.map;
  */
 import dungeoncrawler.gameobject.creature.Creature;
 import dungeoncrawler.gameobject.GameObject;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Square {
 
@@ -14,10 +16,8 @@ public class Square {
     private final int y;
     private GameObject objectOnSquare; // includes non-creature objects like walls, stairs etc.
     private Creature creatureOnSquare;
-    private String symbol;
 
     public Square(int x, int y) {
-        this.symbol = ".";
         this.x = x;
         this.y = y;
 
@@ -54,9 +54,9 @@ public class Square {
     public int getY() {
         return y;
     }
-
-    public String getSymbol() {
-        return symbol;
+    
+    public void draw(Graphics g) {
+        g.setColor(Color.lightGray);
+        g.fillRect(x * 30, y * 30, 30, 30);
     }
-
 }

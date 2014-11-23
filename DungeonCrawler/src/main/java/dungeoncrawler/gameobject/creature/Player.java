@@ -1,5 +1,7 @@
 package dungeoncrawler.gameobject.creature;
 
+import java.awt.Color;
+
 /**
  * This class represents the player within the game. Only one player object
  * should exist within the game at a time.
@@ -12,7 +14,7 @@ public class Player extends Creature {
     private int xp;
 
     public Player() {
-        super("adventurer", "@");
+        super("adventurer", Color.GREEN);
         level = 1;
         xp = 0;
     }

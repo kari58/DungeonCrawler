@@ -12,6 +12,7 @@ import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.map.Square;
 import dungeoncrawler.gameobject.Wall;
 import dungeoncrawler.gameobject.Wall;
+import java.awt.Color;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,7 +52,7 @@ public class SquareTest {
     
     @Test
     public void canSetCreatureOnSquare() {
-        Creature m = new NPC("creature", "m");
+        Creature m = new NPC("creature", true, Color.RED);
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         Creature x = square.getCreatureOnSquare();
@@ -60,7 +61,7 @@ public class SquareTest {
     
     @Test
     public void removeCreatureWorks() {
-        Creature m = new NPC("creature", "m");
+        Creature m = new NPC("creature", true, Color.RED);
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         square.removeCreatureOnSquare();

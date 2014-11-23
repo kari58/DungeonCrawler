@@ -47,7 +47,9 @@ public class MapHandler {
 
     private Square[][] addStairsToMap(Square[][] map) {
         Square stairsSquare = pickRandomUnOccupiedSquare(map, false);
-        stairsSquare.setObjectOnSquare(new Stairs());
+        Stairs st = new Stairs();
+        st.setSquare(stairsSquare);
+        stairsSquare.setObjectOnSquare(st);
         return map;
     }
 
@@ -72,7 +74,9 @@ public class MapHandler {
                 Square square = new Square(x, y);
                 newMap[x][y] = square;
                 if (y == 0 || y == sizeY - 1 || x == 0 || x == sizeX - 1) {
-                    square.setObjectOnSquare(new Wall());
+                    Wall wl = new Wall();
+                    wl.setSquare(square);
+                    square.setObjectOnSquare(wl);
                 }
             }
         }

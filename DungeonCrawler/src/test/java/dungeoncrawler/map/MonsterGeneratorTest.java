@@ -54,17 +54,14 @@ public class MonsterGeneratorTest {
         boolean hostileStatusVaries = false;
         boolean damageVaries = false;
         boolean aggroRadiusVaries = false;
-        boolean symbolVaries = false;
         int firstHealth = monsters.get(0).getMaxHealth();
         int firstAggroRadius = monsters.get(0).getAggroRadius();
         int firstDamage = monsters.get(0).getDamage();
-        String firstSymbol = monsters.get(0).getSymbol();
         boolean firstHostileStatus = monsters.get(0).isHostile();
         for (NPC monster : monsters) {
             int currentHealth = monster.getMaxHealth();
             int currentAggroRadius = monster.getAggroRadius();
             int currentDamage = monster.getDamage();
-            String currentSymbol = monster.getSymbol();
             boolean currentHostileStatus = monster.isHostile();
             if (currentHealth != firstHealth) {
                 healthVaries = true;
@@ -75,14 +72,11 @@ public class MonsterGeneratorTest {
             if (currentDamage != firstDamage) {
                 damageVaries = true;
             }
-            if (!currentSymbol.equals(firstSymbol)) {
-                symbolVaries = true;
-            }
             if (currentHostileStatus != firstHostileStatus) {
                 hostileStatusVaries = true;
             }
         }
-        assertTrue(healthVaries && aggroRadiusVaries && damageVaries && symbolVaries && hostileStatusVaries);
+        assertTrue(healthVaries && aggroRadiusVaries && damageVaries && hostileStatusVaries);
     }
 
     @Test
@@ -113,6 +107,7 @@ public class MonsterGeneratorTest {
         }
     }
     
+    /*
     @Test
     public void monstersAlwaysHaveCorrectSymbolDependingOnHostileStatus() {
         for (int i = 0; i < 50; i++) {
@@ -124,7 +119,7 @@ public class MonsterGeneratorTest {
                 assertEquals("n", monster.getSymbol());
             }
         }
-    }
+    }*/
     
 
     @After
