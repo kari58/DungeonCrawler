@@ -1,14 +1,16 @@
 package dungeoncrawler.map;
 
+
+import dungeoncrawler.gameobject.creature.Creature;
+import dungeoncrawler.gameobject.GameObject;
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * This class encapsulates a square. The game map is composed of objects of this
  * class. Each square may contain a game object such as a wall, or a creature
  * such as a monster or the player
  */
-import dungeoncrawler.gameobject.creature.Creature;
-import dungeoncrawler.gameobject.GameObject;
-import java.awt.Color;
-import java.awt.Graphics;
 
 public class Square {
 
@@ -55,6 +57,12 @@ public class Square {
         return y;
     }
     
+    /**
+     * This method is used to draw a representation of the square on the game
+     * screen. This method should be called by the GraphicsHandler class.
+     * 
+     * @param g The graphics object required by Swing to draw things
+     */
     public void draw(Graphics g) {
         g.setColor(Color.lightGray);
         g.fillRect(x * 30, y * 30, 30, 30);

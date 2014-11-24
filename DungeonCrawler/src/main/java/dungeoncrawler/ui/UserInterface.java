@@ -1,18 +1,18 @@
 package dungeoncrawler.ui;
 
 import dungeoncrawler.logic.GameHandler;
-import dungeoncrawler.map.Square;
 import dungeoncrawler.map.Map;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+/**
+ * This class encapsulates the JFrame containing the UI of the game.
+ * @author Keke
+ */
 
 public class UserInterface implements Runnable {
 
@@ -51,6 +51,11 @@ public class UserInterface implements Runnable {
         frame.addKeyListener(kl);
     }
 
+    /**
+     * This method requests all UI components to update their status to reflect
+     * the current status of the game. This should be called once in the
+     * beginning of each turn.
+     */
     public void update() {
         graphicsHandler.repaint();
         statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());

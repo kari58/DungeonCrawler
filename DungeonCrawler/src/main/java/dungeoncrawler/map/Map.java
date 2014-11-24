@@ -19,10 +19,20 @@ public class Map {
         return map;
     }
     
+    /**
+     * Returns the width of the map.
+     * 
+     * @return the width of the map
+     */
     public int getWidth() {
         return map.length;
     }
     
+    /**
+     * Returns the height of the map.
+     * 
+     * @return the height of the map.
+     */
     public int getHeight() {
         return map[0].length;
     }

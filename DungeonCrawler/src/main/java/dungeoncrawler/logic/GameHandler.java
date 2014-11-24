@@ -35,6 +35,9 @@ public class GameHandler {
         SwingUtilities.invokeLater(ui);
     }
 
+    /**
+     * This method is called when the game ends. To be implemented.
+     */
     public void handleGameEnd() {
         gameHasEnded = true;
         System.out.println("Game over!");
@@ -44,6 +47,13 @@ public class GameHandler {
         return gameHasEnded;
     }
 
+    /**
+     * This method is called whenever the player presses a key. If the game has
+     * not ended, a request to handle player action is passed to the Action
+     * Handler. If a player action was taken, the Action Handler is requested
+     * to handle actions for all NPCs, and the UI is updated.
+     * @param e The KeyEvent corresponding to the button pressed by the player
+     */
     public void handleMovement(KeyEvent e) {
         if (gameHasEnded) {
             return;

@@ -45,6 +45,16 @@ public class MapHandler {
 
     }
 
+    /**
+     * This method will add a Stairs object to the game map. The stairs will be
+     * placed on one random square which does not have either a creature or any
+     * other game object already on it.
+     *
+     * @param map The 2-dimensional Square object array representing the map of
+     * the game
+     * @return The 2-dimensional Square object array representing the map of the
+     * game, with one stairs object added
+     */
     private Square[][] addStairsToMap(Square[][] map) {
         Square stairsSquare = pickRandomUnOccupiedSquare(map, false);
         Stairs st = new Stairs();
@@ -53,6 +63,18 @@ public class MapHandler {
         return map;
     }
 
+    /**
+     * This method will add the player object to a random square on the game
+     * map. The player object will be added to a randomly chosen square which
+     * may not contain any other creature, but may contain a game object which
+     * is walkable.
+     *
+     * @param map The 2-dimensional Square object array representing the map of
+     * the game
+     * @param player The player object representing the player in the game
+     * @return The 2-dimensional Square object array representing the map of the
+     * game, with the player added to one square
+     */
     private Square[][] addPlayerToMap(Square[][] map, Player player) {
         Square playerSquare = pickRandomUnOccupiedSquare(map, true);
         playerSquare.setCreatureOnSquare(player);
@@ -60,13 +82,26 @@ public class MapHandler {
         return map;
     }
 
+    /**
+     * This method will randomly choose a Square from the specified 2-D Square
+     * array. If the boolean parameter is marked as true, the method will
+     * include squares which contain game objects that do not block movement. If
+     * marked as false, only squares which do not contain game objects are
+     * chosen from.
+     *
+     * @param map The 2-dimensional Square object array representing the map of
+     * the game
+     * @param squareCanContainAWalkablebject determines whether squares which
+     * contain game objects that do not block movement should be considered
+     * @return A randomly chosen square
+     */
     private Square pickRandomUnOccupiedSquare(Square[][] map, boolean squareCanContainAWalkableObject) {
         Random rng = new Random();
         List<Square> squares = getUnoccupiedSquares(map, squareCanContainAWalkableObject);
         return squares.get(rng.nextInt(squares.size()));
     }
 
-    // Creates a map matching the requested size
+    
     private Square[][] initMap(int sizeX, int sizeY) {
         Square[][] newMap = new Square[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {

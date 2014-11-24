@@ -4,6 +4,11 @@ import dungeoncrawler.logic.GameHandler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * This class implements the KeyListener interface to allow the player to
+ * interact with the game.
+ */
+
 public class KeyInputListener implements KeyListener {
 
     private GameHandler gameHandler;

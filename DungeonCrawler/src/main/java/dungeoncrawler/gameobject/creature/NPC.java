@@ -45,6 +45,14 @@ public class NPC extends Creature {
         return isHostile;
     }
 
+    /**
+     * This method causes the NPC to take damage. Damage calculation is done
+     * by invoking the takeDamage() method of the inherited Creature-class. 
+     * In addition, if the NPC was not hostile before, it is set to hostile
+     * and its appearance is changed to match that it is hostile.
+     * 
+     * @param damage amount of damage to be taken
+     */
     @Override
     public void takeDamage(int damage) {
         super.takeDamage(damage);
