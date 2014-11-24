@@ -21,7 +21,6 @@ public abstract class GameObject {
         this.color = color;
     }
 
-
     public String getName() {
         return name;
     }

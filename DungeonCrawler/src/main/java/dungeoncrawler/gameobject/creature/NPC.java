@@ -14,7 +14,7 @@ public class NPC extends Creature {
     private int aggroRadius;
 
     public NPC(String name, boolean isHostile, Color color) {
-        super(name, Color.RED);
+        super(name, color);
         this.isHostile = isHostile;
         this.aggroRadius = 2;
     }

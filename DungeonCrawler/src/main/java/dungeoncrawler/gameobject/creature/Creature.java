@@ -14,12 +14,22 @@ public abstract class Creature extends GameObject {
     private int maxHealth;
     private int currentHealth;
     private int damage;
+    private boolean isPlayer;
 
     public Creature(String name, Color color) {
         super(false, name, color);
         this.maxHealth = 100;
         this.currentHealth = maxHealth;
         this.damage = 5;
+        this.isPlayer = false;
+    }
+    
+    public boolean isPlayer() {
+        return isPlayer;
+    }
+    
+    public void setPlayerStatus(boolean playerStatus) {
+        isPlayer = playerStatus;
     }
 
     public int getMaxHealth() {

@@ -15,6 +15,7 @@ public class Player extends Creature {
 
     public Player() {
         super("adventurer", Color.GREEN);
+        super.setPlayerStatus(true);
         level = 1;
         xp = 0;
     }
