@@ -42,6 +42,10 @@ public abstract class GameObject {
         this.color = color;
     }
     
+    public Color getColor() {
+        return color;
+    }
+    
     /**
      * This method draws a 30x30 pixel representation of the game object, which
      * by default is a mono-color square. The color of the square is determined

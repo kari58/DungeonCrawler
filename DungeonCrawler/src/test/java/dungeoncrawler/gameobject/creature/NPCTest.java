@@ -56,6 +56,55 @@ public class NPCTest {
     }*/
     
     @Test
+    public void settingRandomMoveChanceWorks() {
+        monster.setChanceToMoveRandomly(0.5);
+        assertEquals(0.5, monster.getChanceToMoveRandomly(),0.01);
+    }
+    
+    @Test
+    public void takingDamageSetsNPCHostile() {
+        monster.setHostileStatus(false);
+        assertFalse(monster.isHostile());
+        monster.takeDamage(5);
+        assertTrue(monster.isHostile());
+    }
+    
+    @Test
+    public void takingDamageChangesNPCColorIfNPCWasNeutral() {
+        monster.setHostileStatus(false);
+        monster.setColor(Color.YELLOW);
+        assertEquals(Color.YELLOW, monster.getColor());
+        monster.takeDamage(5);
+        assertEquals(Color.RED, monster.getColor());
+    }
+    
+    @Test
+    public void cannotTakeNegativeDamage() {
+        int health = monster.getCurrentHealth();
+        monster.takeDamage(-10);
+        assertEquals(health, monster.getCurrentHealth());
+    }
+    
+    @Test
+    public void healthCannotGoBelowZero() {
+        monster.takeDamage(5000);
+        assertEquals(0, monster.getCurrentHealth());
+    }
+    
+    @Test
+    public void takingDamageReducesCorrectAmountOfHealth() {
+        int health = monster.getCurrentHealth();
+        monster.takeDamage(2);
+        assertEquals(health - 2, monster.getCurrentHealth());
+    }
+    
+    
+    @Test
+    public void playerStatusIsCorrect() {
+        assertFalse(monster.isPlayer());
+    }
+    
+    @Test
     public void maxHealthIsCorrectAfterCreation() {
         assertEquals(monster.getMaxHealth(), 100);
     }
@@ -69,12 +118,6 @@ public class NPCTest {
     public void takingDamageWorks() {
         monster.takeDamage(25);
         assertEquals(monster.getCurrentHealth(), monster.getMaxHealth() - 25);
-    }
-    
-    @Test
-    public void cannotTakeNegativeDamage() {
-        monster.takeDamage(-25);
-        assertEquals(monster.getCurrentHealth(), monster.getMaxHealth());
     }
     
     @Test

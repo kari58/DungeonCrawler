@@ -40,7 +40,6 @@ public class GameHandler {
      */
     public void handleGameEnd() {
         gameHasEnded = true;
-        System.out.println("Game over!");
     }
 
     public boolean gameHasEnded() {
@@ -54,7 +53,7 @@ public class GameHandler {
      * to handle actions for all NPCs, and the UI is updated.
      * @param e The KeyEvent corresponding to the button pressed by the player
      */
-    public void handleMovement(KeyEvent e) {
+    public void handleMovement(int e) {
         if (gameHasEnded) {
             return;
         }
@@ -67,6 +66,10 @@ public class GameHandler {
 
     public Player getPlayer() {
         return player;
+    }
+    
+    public ActionHandler getActionHandler() {
+        return actionHandler;
     }
 
 }

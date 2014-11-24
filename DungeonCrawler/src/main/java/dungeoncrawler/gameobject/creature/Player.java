@@ -32,7 +32,7 @@ public class Player extends Creature {
      */
     public void gainXp(int amount) {
         xp += amount;
-        if (xp > 1000 * level) {
+        while (xp > 1000 * level) {
             gainLevel();
         }
     }
@@ -45,9 +45,17 @@ public class Player extends Creature {
     private void gainLevel() {
         xp -= 1000 * level;
         level++;
-        super.setDamage(super.getDamage() + (int) (1.4 * level));
-        super.setMaxHealth((int) (super.getMaxHealth() * (1 + level / 9)));
+        super.setDamage(super.getDamage() + (int) (1.5 * level));
+        super.setMaxHealth(super.getMaxHealth() + (int) (level * 5));
         super.setCurrentHealth(super.getMaxHealth());
+    }
+    
+    public int getLevel() {
+        return level;
+    }
+    
+    public int getXp() {
+        return xp;
     }
 
 }

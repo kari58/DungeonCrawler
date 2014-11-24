@@ -40,21 +40,21 @@ public class ActionHandler {
      * outside map boundaries, no action will be taken. In case an action was
      * taken, true is returned, otherwise false is returned.
      *
-     * @param e the KeyEvent matching the key pressed by the player
+     * @param e the key code matching the key pressed by the player
      * @return true if an action was taken, false if not
      */
-    public boolean handlePlayerMove(KeyEvent e) {
+    public boolean handlePlayerMove(int e) {
         int playerX = player.getSquare().getX();
         int playerY = player.getSquare().getY();
         int dX = 0;
         int dY = 0;
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (e == KeyEvent.VK_LEFT) {
             dX -= 1;
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        } else if (e == KeyEvent.VK_RIGHT) {
             dX += 1;
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+        } else if (e == KeyEvent.VK_UP) {
             dY -= 1;
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (e == KeyEvent.VK_DOWN) {
             dY += 1;
         }
         if (playerX + dX < 0 || playerX + dX > map.getWidth() - 1 || playerY + dY < 0 || playerY + dY > map.getHeight() - 1) {

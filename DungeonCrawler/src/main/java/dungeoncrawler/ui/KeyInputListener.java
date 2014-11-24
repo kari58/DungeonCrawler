@@ -27,7 +27,7 @@ public class KeyInputListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        gameHandler.handleMovement(e);
+        gameHandler.handleMovement(e.getKeyCode());
     }
 
 }
