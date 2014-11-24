@@ -22,7 +22,7 @@ public class Player extends Creature {
         level = 1;
         xp = 0;
     }
-
+    
     /**
      * This method adds experience to the player. If the player's total
      * experience exceeds the required amount of experience to level up, the
