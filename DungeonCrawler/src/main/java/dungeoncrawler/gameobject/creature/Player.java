@@ -16,6 +16,9 @@ public class Player extends Creature {
     public Player() {
         super("adventurer", Color.GREEN);
         super.setPlayerStatus(true);
+        super.setMaxHealth(200);
+        super.setCurrentHealth(super.getMaxHealth());
+        super.setDamage(40);
         level = 1;
         xp = 0;
     }

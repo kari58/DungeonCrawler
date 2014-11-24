@@ -1,34 +1,26 @@
 package dungeoncrawler;
 
-import dungeoncrawler.gameobject.GameObject;
-import dungeoncrawler.gameobject.creature.Creature;
-import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.map.Map;
 import dungeoncrawler.gameobject.creature.Player;
-import dungeoncrawler.map.Square;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import javax.swing.SwingUtilities;
 
 /**
  * This class contains the logic for running the game loop at the highest level.
+ * The class also functions as a hub which contains all the major game components.
  */
 public class GameHandler {
 
     private Map map;
     private Player player;
     private UserInterface ui;
-    private Random rng;
     private boolean gameHasEnded;
     private ActionHandler actionHandler;
 
     public GameHandler() {
         player = new Player();
         map = new Map(player);
-        ui = new UserInterface(map, this);
-        rng = new Random();
+        ui = new UserInterface(this);
         gameHasEnded = false;
         actionHandler = new ActionHandler(this);
     }

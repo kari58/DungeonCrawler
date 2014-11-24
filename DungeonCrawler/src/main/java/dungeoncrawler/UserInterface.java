@@ -20,10 +20,10 @@ public class UserInterface implements Runnable {
     private GameHandler gameHandler;
     private GraphicsHandler graphicsHandler;
     private JLabel statusText;
-    
-    public UserInterface(Map map, GameHandler gameHandler) {
-        this.map = map;
+
+    public UserInterface(GameHandler gameHandler) {
         this.gameHandler = gameHandler;
+        this.map = gameHandler.getMap();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class UserInterface implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         createComponents(frame.getContentPane());
-        
+
         frame.pack();
         frame.setVisible(true);
 
@@ -49,26 +49,10 @@ public class UserInterface implements Runnable {
         KeyInputListener kl = new KeyInputListener(gameHandler);
         frame.addKeyListener(kl);
     }
-    
+
     public void update() {
         graphicsHandler.repaint();
         statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());
     }
-/*
-    public void drawMap(Map mapObject) {
-        Square[][] map = mapObject.getMap();
-        for (Square[] squares : map) {
-            for (Square square : squares) {
-                if (square.getCreatureOnSquare() != null) {
-                    System.out.print(square.getCreatureOnSquare().getSymbol());
-                } else if (square.getObjectOnSquare() != null) {
-                    System.out.print(square.getObjectOnSquare().getSymbol());
-                } else {
-                    System.out.print(square.getSymbol());
-                }
-            }
-            System.out.println("");
-        }
-    }*/
 
 }
