@@ -44,6 +44,14 @@ public class ActionHandler {
      * @return true if an action was taken, false if not
      */
     public boolean handlePlayerMove(int e) {
+        if (e == KeyEvent.VK_ENTER) {
+            if (player.getSquare().getObjectOnSquare() != null) {
+                if (player.getSquare().getObjectOnSquare().getName().equals("stairs")) {
+                    gameHandler.enterNewLevel();
+                }
+            }
+            return false;
+        }
         int playerX = player.getSquare().getX();
         int playerY = player.getSquare().getY();
         int dX = 0;
@@ -131,9 +139,9 @@ public class ActionHandler {
 
     /**
      * This method will cause the specified creature to attack the specified
-     * target. Damage equal to the attacker's damage modifier will be caused
-     * to the target. 
-     * 
+     * target. Damage equal to the attacker's damage modifier will be caused to
+     * the target.
+     *
      * @param attacker The creature performing the attack
      * @param target The target of the attack
      */
@@ -149,11 +157,11 @@ public class ActionHandler {
     }
 
     /**
-     * This method will move the specified creature to the specified square.
-     * The previous square the creature was on will be emptied, the new square
-     * will receive a reference to the creature and the creature will receive
-     * a reference to the new square.
-     * 
+     * This method will move the specified creature to the specified square. The
+     * previous square the creature was on will be emptied, the new square will
+     * receive a reference to the creature and the creature will receive a
+     * reference to the new square.
+     *
      * @param creature The creature to be moved
      * @param targetSquare The square to move to
      */
@@ -166,8 +174,8 @@ public class ActionHandler {
     /**
      * This method will attempt to move the specified creature to a random
      * adjacent square. If no movable adjacent squares are found, the creature
-     * will not move. 
-     * 
+     * will not move.
+     *
      * @param creature The creature attempting to move
      */
     private void moveToRandomAdjacentSquare(Creature creature) {

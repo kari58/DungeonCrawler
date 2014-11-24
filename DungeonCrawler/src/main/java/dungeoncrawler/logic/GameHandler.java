@@ -45,7 +45,12 @@ public class GameHandler {
     public boolean gameHasEnded() {
         return gameHasEnded;
     }
-
+    
+    public void enterNewLevel() {
+        map.updateMapForNewLevel(player);
+        ui.update();
+    }
+    
     /**
      * This method is called whenever the player presses a key. If the game has
      * not ended, a request to handle player action is passed to the Action
