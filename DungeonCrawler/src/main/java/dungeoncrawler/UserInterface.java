@@ -2,12 +2,15 @@ package dungeoncrawler;
 
 import dungeoncrawler.map.Square;
 import dungeoncrawler.map.Map;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class UserInterface implements Runnable {
@@ -15,12 +18,12 @@ public class UserInterface implements Runnable {
     private JFrame frame;
     private Map map;
     private GameHandler gameHandler;
-    private List<Component> components;
+    private GraphicsHandler graphicsHandler;
+    private JLabel statusText;
     
     public UserInterface(Map map, GameHandler gameHandler) {
         this.map = map;
         this.gameHandler = gameHandler;
-        this.components = new ArrayList<Component>();
     }
 
     @Override
@@ -37,17 +40,19 @@ public class UserInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
-        GraphicsHandler gh = new GraphicsHandler(map);
-        container.add(gh);
-        components.add(gh);
+        container.setLayout(new BorderLayout());
+        graphicsHandler = new GraphicsHandler(map);
+        container.add(graphicsHandler);
+        statusText = new JLabel();
+        statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());
+        container.add(statusText, BorderLayout.SOUTH);
         KeyInputListener kl = new KeyInputListener(gameHandler);
         frame.addKeyListener(kl);
     }
     
     public void update() {
-        for (Component c : components) {
-            c.repaint();
-        }
+        graphicsHandler.repaint();
+        statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());
     }
 /*
     public void drawMap(Map mapObject) {
