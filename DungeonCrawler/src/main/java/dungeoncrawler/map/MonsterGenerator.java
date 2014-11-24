@@ -55,11 +55,13 @@ public class MonsterGenerator {
         int aggroRadius = rng.nextInt(4) + 1;
         int monsterHealth = (int) ((rng.nextInt(51) + 50) * difficultymultiplier);
         int monsterDamage = (int) ((rng.nextInt(5) + 6) * difficultymultiplier);
+        double chanceToMoveRandomly = Math.max(0.3, Math.min(0.9, rng.nextDouble()));
         Color color = Color.RED;
         if (!isHostile) {
             color = Color.YELLOW;
         }
         NPC monster = new NPC(name, isHostile, color);
+        monster.setChanceToMoveRandomly(chanceToMoveRandomly);
         monster.setHostileStatus(isHostile);
         monster.setAggroRadius(aggroRadius);
         monster.setMaxHealth(monsterHealth);

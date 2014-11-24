@@ -6,7 +6,8 @@ import java.awt.Graphics;
 
 /**
  * This abstract class contains information and services common to all game
- * objects.
+ * objects. Game objects all occupy a square, may or may not be walked through,
+ * have a name and are able to draw themselves.
  */
 public abstract class GameObject {
 
@@ -37,6 +38,17 @@ public abstract class GameObject {
         return square;
     }
     
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+    /**
+     * This method draws a 30x30 pixel representation of the game object, which
+     * by default is a mono-color square. The color of the square is determined
+     * by the game object class.
+     * 
+     * @param g Graphics object required by Swing for drawing
+     */
     public void draw(Graphics g) {
         int x = this.getSquare().getX();
         int y = this.getSquare().getY();

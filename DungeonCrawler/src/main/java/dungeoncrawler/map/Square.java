@@ -14,7 +14,7 @@ public class Square {
 
     private final int x;
     private final int y;
-    private GameObject objectOnSquare; // includes non-creature objects like walls, stairs etc.
+    private GameObject objectOnSquare; 
     private Creature creatureOnSquare;
 
     public Square(int x, int y) {

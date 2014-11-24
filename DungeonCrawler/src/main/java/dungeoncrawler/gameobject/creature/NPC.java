@@ -12,11 +12,21 @@ public class NPC extends Creature {
 
     private boolean isHostile;
     private int aggroRadius;
+    private double chanceToMoveRandomly;
+
+    public double getChanceToMoveRandomly() {
+        return chanceToMoveRandomly;
+    }
+
+    public void setChanceToMoveRandomly(double chanceToMoveRandomly) {
+        this.chanceToMoveRandomly = chanceToMoveRandomly;
+    }
 
     public NPC(String name, boolean isHostile, Color color) {
         super(name, color);
         this.isHostile = isHostile;
         this.aggroRadius = 2;
+        this.chanceToMoveRandomly = 0.5;
     }
 
     public void setAggroRadius(int radius) {
@@ -33,6 +43,15 @@ public class NPC extends Creature {
 
     public boolean isHostile() {
         return isHostile;
+    }
+
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        if (!isHostile) {
+            this.isHostile = true;
+            super.setColor(Color.RED);
+        }
     }
 
 }

@@ -8,19 +8,22 @@ import dungeoncrawler.map.Square;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ActionHandler {
 
-    private MovementUtils movementUtils;
+    private MapUtils movementUtils;
     private Map map;
     private Player player;
     private GameHandler gameHandler;
+    private Random rng;
 
     public ActionHandler(GameHandler gameHandler) {
         this.gameHandler = gameHandler;
         this.map = gameHandler.getMap();
-        this.movementUtils = new MovementUtils(map);
+        this.movementUtils = new MapUtils(map);
         this.player = gameHandler.getPlayer();
+        this.rng = new Random();
     }
 
     public boolean handlePlayerMove(KeyEvent e) {
@@ -66,12 +69,14 @@ public class ActionHandler {
                 }
             }
         }
-        for (NPC creature : NPCs) {
+        for (NPC entity : NPCs) {
             if (!gameHandler.gameHasEnded()) {
-                if (!creature.isHostile() || creature.getAggroRadius() < movementUtils.getDistanceToTarget(creature.getSquare(), player.getSquare())) {
-                    moveToRandomSquare(creature);
+                if (!entity.isHostile() || entity.getAggroRadius() < movementUtils.getDistanceToTarget(entity.getSquare(), player.getSquare())) {
+                    if (rng.nextDouble() < entity.getChanceToMoveRandomly()) {
+                        moveToRandomSquare(entity);
+                    }
                 } else {
-                    attemptToAttackPlayer(creature);
+                    attemptToAttackPlayer(entity);
                 }
             }
 
@@ -108,7 +113,7 @@ public class ActionHandler {
     }
 
     private void moveToRandomSquare(Creature creature) {
-        Square targetSquare = movementUtils.pickRandomSquareToMoveTo(creature.getSquare());
+        Square targetSquare = movementUtils.pickRandomAdjacentMovableSquare(creature.getSquare());
         if (targetSquare != null) {
             moveCreature(creature, targetSquare);
         }
