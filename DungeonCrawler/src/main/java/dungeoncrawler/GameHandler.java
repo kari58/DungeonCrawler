@@ -56,44 +56,91 @@ public class GameHandler {
         }
         Square targetSquare = map.getMap()[playerX + dX][playerY + dY];
         Creature targetCreature = targetSquare.getCreatureOnSquare();
-        GameObject targetObject = targetSquare.getObjectOnSquare();
         if (targetCreature != null) {
-            // attack and return, rest of the stuff assumes creature is null
+            attackCreature(player, targetCreature);
             return;
         }
         if (!squareIsMovable(targetSquare)) {
             return;
         }
-        moveCreature(targetSquare, player);
-        moveNPCs();
+        moveCreature(player, targetSquare);
+        handleNPCActions();
         ui.update();
     }
 
-    private void moveCreature(Square targetSquare, Creature creature) {
+    private void moveCreature(Creature creature, Square targetSquare) {
         creature.getSquare().setCreatureOnSquare(null);
         targetSquare.setCreatureOnSquare(creature);
         creature.setSquare(targetSquare);
     }
 
-    private void moveNPCs() {
-        List<Creature> NPCs = new ArrayList<Creature>();
+    private void handleNPCActions() {
+        List<NPC> NPCs = new ArrayList<NPC>();
         for (Square[] row : map.getMap()) {
             for (Square square : row) {
                 Creature creature = square.getCreatureOnSquare();
                 if (creature != null) {
                     if (!creature.isPlayer()) {
-                        System.out.println("Added creature " + creature.getName());
-                        NPCs.add(creature);
+                        NPCs.add((NPC) creature);
                     }
                 }
             }
         }
-        for (Creature creature : NPCs) {
-            Square targetSquare = pickRandomSquareToMoveTo(creature.getSquare());
-            if (targetSquare != null) {
-                moveCreature(targetSquare, creature);
+        for (NPC creature : NPCs) {
+            if (!creature.isHostile() || creature.getAggroRadius() < getDistanceToTarget(creature.getSquare(), player.getSquare())) {
+                moveToRandomSquare(creature);
+            } else {
+                attemptToAttackPlayer(creature);
             }
 
+        }
+    }
+
+    private void moveToRandomSquare(Creature creature) {
+        Square targetSquare = pickRandomSquareToMoveTo(creature.getSquare());
+        if (targetSquare != null) {
+            moveCreature(creature, targetSquare);
+        }
+    }
+
+    private void attemptToAttackPlayer(Creature creature) {
+        if (getDistanceToTarget(creature.getSquare(), player.getSquare()) == 1) {
+            attackCreature(creature, player);
+            return;
+        }
+        List<Square> possibleSquares = getMovableAdjacentSquares(creature.getSquare());
+        if (possibleSquares.isEmpty()) {
+            return;
+        }
+        moveCreature(creature, findSquareNearestToTarget(possibleSquares, player.getSquare()));
+
+    }
+
+    private int getDistanceToTarget(Square from, Square to) {
+        int initiatorX = from.getX();
+        int initiatorY = from.getY();
+        int targetX = to.getX();
+        int targetY = to.getY();
+        return Math.abs(initiatorX - targetX) + Math.abs(initiatorY - targetY);
+    }
+
+    private Square findSquareNearestToTarget(List<Square> squares, Square targetSquare) {
+        int closestDistance = 999;
+        Square closestSquare = squares.get(0);
+        for (Square square : squares) {
+            if (getDistanceToTarget(square, targetSquare) < closestDistance) {
+                closestDistance = getDistanceToTarget(square,targetSquare);
+                closestSquare = square;
+            }
+        }
+        return closestSquare;
+    }
+
+    private void attackCreature(Creature attacker, Creature target) {
+        target.takeDamage(attacker.getDamage());
+        if (target.getCurrentHealth() == 0) {
+            target.getSquare().setCreatureOnSquare(null);
+            target.setSquare(null);
         }
     }
 
@@ -137,6 +184,7 @@ public class GameHandler {
     }
 
     private Square pickRandomSquareToMoveTo(Square originalSquare) {
+        System.out.println("I'm moving to a random square");
         List<Square> squares = getMovableAdjacentSquares(originalSquare);
         if (squares.isEmpty()) {
             return null;
