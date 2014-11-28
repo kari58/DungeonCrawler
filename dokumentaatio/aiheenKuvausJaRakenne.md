@@ -7,24 +7,21 @@
 **Pelaajan toiminnot:**
 
 * Pelihahmon liikkuminen käyttäen nuolinäppäimiä
-* Tavaroiden hallinta
 * Siirtyminen tasolta toiselle
 * Taistelu
-* Taitojen ja loitsujen käyttö
 
 **Käyttöliittymä:**
 
 * Yksinkertainen sprite-pohjainen graafinen ulkoasu, ei animaatioita
 * Pelaaja ja hirviöt oltava erotettavissa
 * Pelaajahahmon liikutus näppäimistöllä
-* Tavaroiden ja loitsujen käyttö hiirellä
 
 **Hirviöiden ominaisuudet:**
 
 * Satunnaisesti generoidut statit, jotka kasvavat tasojen myötä
-* Eri taitoja ja loitsuja
 * Ainakin muutama eri ulkonäkö
-* Yksinkertainen AI ja reittialgoritmi
+* Yksinkertainen AI joka osaa löytää pelaajan ja hyökätä kimppuun
+* Satunnaisesti sekä neutraaleja että aggressiivisia hirviöitä
 
 **Kartan ominaisuudet:**
 
@@ -32,8 +29,3 @@
 * Ruudukko-pohjainen
 * Ruudut: Seinät ja lattiat, portaat
 * Ei saa luoda umpikujia
-
-**Taidot ja loitsut:** 
-
-* Ainakin pari eri loitsua kuten parannus ja maaginen hyökkäys
-
