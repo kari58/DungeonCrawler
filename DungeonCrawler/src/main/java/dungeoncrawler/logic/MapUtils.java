@@ -95,7 +95,7 @@ public class MapUtils {
             }
         }
         return squares;
-    }
+    } 
 
     /**
      * This method examines whether a square can be moved into. A square is

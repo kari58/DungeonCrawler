@@ -12,7 +12,8 @@ import java.awt.Color;
 public class Wall extends GameObject {
 
     public Wall() {
-        super(false, "wall", Color.DARK_GRAY);
+        super(false, "wall");
+        super.setSpritePath("images\\graySquare.jpg");
     }
 
 }

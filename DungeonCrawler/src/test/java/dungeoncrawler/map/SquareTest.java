@@ -52,7 +52,7 @@ public class SquareTest {
     
     @Test
     public void canSetCreatureOnSquare() {
-        Creature m = new NPC("creature", true, Color.RED);
+        Creature m = new NPC("creature", true);
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         Creature x = square.getCreatureOnSquare();
@@ -61,7 +61,7 @@ public class SquareTest {
     
     @Test
     public void removeCreatureWorks() {
-        Creature m = new NPC("creature", true, Color.RED);
+        Creature m = new NPC("creature", true);
         square.setCreatureOnSquare(m);
         assertNotNull(square.getCreatureOnSquare());
         square.removeCreatureOnSquare();

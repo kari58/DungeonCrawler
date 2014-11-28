@@ -10,7 +10,8 @@ import java.awt.Color;
 public class Stairs extends GameObject {
 
     public Stairs() {
-        super(true, "stairs", Color.ORANGE);
+        super(true, "stairs");
+        super.setSpritePath("images\\brownSquare.jpg");
     }
 
 }

@@ -18,11 +18,12 @@ public class Square {
     private final int y;
     private GameObject objectOnSquare; 
     private Creature creatureOnSquare;
+    private String spritePath;
 
     public Square(int x, int y) {
         this.x = x;
         this.y = y;
-
+        spritePath = "images\\floorSquare.jpg";
     }
 
     public Creature getCreatureOnSquare() {
@@ -55,6 +56,10 @@ public class Square {
 
     public int getY() {
         return y;
+    }
+    
+    public String getSpritePath() {
+        return spritePath;
     }
     
     /**

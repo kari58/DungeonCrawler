@@ -14,13 +14,14 @@ public class Player extends Creature {
     private int xp;
 
     public Player() {
-        super("adventurer", Color.GREEN);
+        super("adventurer");
         super.setPlayerStatus(true);
         super.setMaxHealth(200);
         super.setCurrentHealth(super.getMaxHealth());
         super.setDamage(40);
         level = 1;
         xp = 0;
+        super.setSpritePath("images\\greenSquare.jpg");
     }
     
     /**

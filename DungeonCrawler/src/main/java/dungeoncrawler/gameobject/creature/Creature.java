@@ -14,19 +14,21 @@ public abstract class Creature extends GameObject {
     private int currentHealth;
     private int damage;
     private boolean isPlayer;
-
-    public Creature(String name, Color color) {
-        super(false, name, color);
+    
+    public Creature(String name) {
+        super(false, name);
         this.maxHealth = 100;
         this.currentHealth = maxHealth;
         this.damage = 5;
         this.isPlayer = false;
     }
-    
+
     public boolean isPlayer() {
         return isPlayer;
     }
     
+    
+
     public void setPlayerStatus(boolean playerStatus) {
         isPlayer = playerStatus;
     }
@@ -50,11 +52,12 @@ public abstract class Creature extends GameObject {
      * @param damage the amount of damage to be done to the creature
      */
     public void takeDamage(int damage) {
-        if (damage > 0) {
-            this.currentHealth -= damage;
-            if (this.currentHealth < 0) {
-                this.currentHealth = 0;
-            }
+        if (damage < 0) {
+            return;
+        }
+        this.currentHealth -= damage;
+        if (this.currentHealth < 0) {
+            this.currentHealth = 0;
         }
 
     }

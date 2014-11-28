@@ -20,6 +20,6 @@
 
 24.11.2014: 12:00 - 15:00 Lisää käyttöliittymää 3h
 
-24.11.2014: 15:30 - 18:00 Koodausta ja lisää testejä 2,5h
+24.11.2014: 15:30 - 18:30 Koodausta ja lisää testejä 3h
 
-Yhteensä: 28,5h
+Yhteensä: 29h

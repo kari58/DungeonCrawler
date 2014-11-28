@@ -3,6 +3,7 @@ package dungeoncrawler.gameobject;
 import dungeoncrawler.map.Square;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  * This abstract class contains information and services common to all game
@@ -11,17 +12,24 @@ import java.awt.Graphics;
  */
 public abstract class GameObject {
 
-    boolean walkable;
-    String name;
-    Square square;
-    Color color;
+    private boolean walkable;
+    private String name;
+    private Square square;
+    private String spritePath;
 
-    public GameObject(boolean walkable, String name, Color color) {
+    public GameObject(boolean walkable, String name) {
         this.walkable = walkable;
         this.name = name;
-        this.color = color;
     }
 
+    public String getSpritePath() {
+        return spritePath;
+    }
+    
+    public void setSpritePath(String path) {
+        this.spritePath = path;
+    }
+    
     public String getName() {
         return name;
     }
@@ -38,13 +46,6 @@ public abstract class GameObject {
         return square;
     }
     
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    
-    public Color getColor() {
-        return color;
-    }
     
     /**
      * This method draws a 30x30 pixel representation of the game object, which
@@ -52,7 +53,7 @@ public abstract class GameObject {
      * by the game object class.
      * 
      * @param g Graphics object required by Swing for drawing
-     */
+     *//*
     public void draw(Graphics g) {
         int x = this.getSquare().getX();
         int y = this.getSquare().getY();
@@ -60,5 +61,14 @@ public abstract class GameObject {
         g.fillRect(x * 30, y * 30, 30, 30);
         
     }
+    
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+    public Color getColor() {
+        return color;
+    }*/
+    
 
 }

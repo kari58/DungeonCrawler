@@ -22,8 +22,8 @@ public class NPC extends Creature {
         this.chanceToMoveRandomly = chanceToMoveRandomly;
     }
 
-    public NPC(String name, boolean isHostile, Color color) {
-        super(name, color);
+    public NPC(String name, boolean isHostile) {
+        super(name);
         this.isHostile = isHostile;
         this.aggroRadius = 2;
         this.chanceToMoveRandomly = 0.5;
@@ -58,7 +58,7 @@ public class NPC extends Creature {
         super.takeDamage(damage);
         if (!isHostile) {
             this.isHostile = true;
-            super.setColor(Color.RED);
+            super.setSpritePath("images\\redSquare.jpg");
         }
     }
 

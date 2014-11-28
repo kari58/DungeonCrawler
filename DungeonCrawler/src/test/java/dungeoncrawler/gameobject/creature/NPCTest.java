@@ -5,8 +5,6 @@ package dungeoncrawler.gameobject.creature;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import dungeoncrawler.gameobject.creature.Creature;
-import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.map.Square;
 import java.awt.Color;
 import org.junit.After;
@@ -40,7 +38,7 @@ public class NPCTest {
     @Before
     public void setUp() {
         square = new Square(1, 1);
-        monster = new NPC("monster", true, Color.RED);
+        monster = new NPC("monster", true);
         monster.setSquare(square);
     }
     /*
@@ -68,7 +66,7 @@ public class NPCTest {
         monster.takeDamage(5);
         assertTrue(monster.isHostile());
     }
-    
+    /*
     @Test
     public void takingDamageChangesNPCColorIfNPCWasNeutral() {
         monster.setHostileStatus(false);
@@ -76,26 +74,18 @@ public class NPCTest {
         assertEquals(Color.YELLOW, monster.getColor());
         monster.takeDamage(5);
         assertEquals(Color.RED, monster.getColor());
-    }
+    }*/
     
     @Test
     public void cannotTakeNegativeDamage() {
-        int health = monster.getCurrentHealth();
-        monster.takeDamage(-10);
-        assertEquals(health, monster.getCurrentHealth());
+        monster.takeDamage(-1);
+        assertEquals(monster.getMaxHealth(), monster.getCurrentHealth());
     }
-    
-    @Test
-    public void healthCannotGoBelowZero() {
-        monster.takeDamage(5000);
-        assertEquals(0, monster.getCurrentHealth());
-    }
-    
+        
     @Test
     public void takingDamageReducesCorrectAmountOfHealth() {
-        int health = monster.getCurrentHealth();
-        monster.takeDamage(2);
-        assertEquals(health - 2, monster.getCurrentHealth());
+        monster.takeDamage(monster.getCurrentHealth() - 1);
+        assertEquals(1, monster.getCurrentHealth());
     }
     
     
@@ -116,13 +106,13 @@ public class NPCTest {
     
     @Test
     public void takingDamageWorks() {
-        monster.takeDamage(25);
-        assertEquals(monster.getCurrentHealth(), monster.getMaxHealth() - 25);
+        monster.takeDamage(1);
+        assertEquals(monster.getCurrentHealth(), monster.getMaxHealth() - 1);
     }
     
     @Test
     public void healthCannotBeLowerThanZero() {
-        monster.takeDamage(monster.getMaxHealth() + 10);
+        monster.takeDamage(monster.getMaxHealth() + 1);
         assertEquals(monster.getCurrentHealth(), 0);
     }
     

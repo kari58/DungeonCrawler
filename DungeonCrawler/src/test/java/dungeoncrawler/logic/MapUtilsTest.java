@@ -61,7 +61,7 @@ public class MapUtilsTest {
     @Test
     public void squaresAreNotMovableWhenTheyContainBlockingObjects() {
         Square square = new Square(1,1);
-        Creature monster = new NPC("monster", true, Color.RED);
+        Creature monster = new NPC("monster", true);
         square.setCreatureOnSquare(monster);
         assertFalse(mapUtils.squareIsMovable(square));
         square.removeCreatureOnSquare();

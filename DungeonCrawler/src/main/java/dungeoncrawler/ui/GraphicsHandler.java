@@ -5,6 +5,15 @@ import dungeoncrawler.map.Map;
 import dungeoncrawler.map.Square;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -30,14 +39,29 @@ public class GraphicsHandler extends JPanel {
      */
     @Override
     protected void paintComponent(Graphics g) {
+        GraphicsConfiguration graphicsConfiguration = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+
         for (Square[] row : map.getMap()) {
             for (Square square : row) {
+                String path = "";
                 if (square.getCreatureOnSquare() != null) {
-                    square.getCreatureOnSquare().draw(g);
+                    path = square.getCreatureOnSquare().getSpritePath();
                 } else if (square.getObjectOnSquare() != null) {
-                    square.getObjectOnSquare().draw(g);
+                    path = square.getObjectOnSquare().getSpritePath();
                 } else {
-                    square.draw(g);
+                    path = square.getSpritePath();
+                }
+
+                try {
+                    Image image = ImageIO.read(new File(path));
+                    BufferedImage bufferedImage = graphicsConfiguration.createCompatibleImage(image.getWidth(null), image.getHeight(null));
+                    Graphics tempGraphics = bufferedImage.getGraphics();
+                    tempGraphics.drawImage(image, 0, 0, null);
+                    tempGraphics.dispose();
+                    g.drawImage(bufferedImage, square.getX() * 30, square.getY() * 30, null);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(GraphicsHandler.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
