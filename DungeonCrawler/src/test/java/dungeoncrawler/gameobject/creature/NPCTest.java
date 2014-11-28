@@ -90,6 +90,12 @@ public class NPCTest {
     
     
     @Test
+    public void spritePathGetsSetCorrectly() {
+        monster.setSpritePath("images\\redSquare.jpg");
+        assertEquals("images\\redSquare.jpg", monster.getSpritePath());
+    }
+    
+    @Test
     public void playerStatusIsCorrect() {
         assertFalse(monster.isPlayer());
     }

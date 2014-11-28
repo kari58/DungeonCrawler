@@ -45,6 +45,11 @@ public class SquareTest {
     }
     
     @Test
+    public void spritePathIsSetAfterCreation() {
+        assertNotNull(square.getSpritePath());
+    }
+    
+    @Test
     public void coordinatesAreCorrectAfterCreation() {
         assertEquals(square.getX(), 2);
         assertEquals(square.getY(), 2);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="dungeoncrawler.map.MapHandlerTest" time="0.02" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="dungeoncrawler.map.MapHandlerTest" time="0.118" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_20\jre\bin"/>
@@ -15,6 +15,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="test" value="dungeoncrawler.map.MapHandlerTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Git\DungeonCrawler\DungeonCrawler"/>
     <property name="java.runtime.version" value="1.8.0_20-b26"/>
@@ -45,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_20\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files\tmcbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=dungeoncrawler.map.MapHandlerTest -Dmaven.ext.class.path=C:\Program Files\tmcbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="user.language.format" value="fi"/>
@@ -63,8 +64,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="nothingOverlapsWithUnwalkableObjects" time="0.01"/>
-  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="numberOfCreaturesAlwaysIncreasesByTwoEachLevel" time="0"/>
-  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="mapSizeIncreasesWithEachLevel" time="0.01"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="allObjectsAndCreaturesOnMapReferToTheCorrectSquare" time="0.006"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="nothingOverlapsWithUnwalkableObjects" time="0.036"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="numberOfCreaturesAlwaysIncreasesByTwoEachLevel" time="0.005"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="mapSizeIncreasesWithEachLevel" time="0"/>
   <testcase classname="dungeoncrawler.map.MapHandlerTest" name="mapEdgesAreSurroundedByWalls" time="0"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="mapAlwaysHasAPlayer" time="0.004"/>
+  <testcase classname="dungeoncrawler.map.MapHandlerTest" name="mapAlwaysHasStairs" time="0.004"/>
 </testsuite>

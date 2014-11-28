@@ -85,7 +85,7 @@ public class MapHandlerTest {
         }
 
     }
-    
+
     @Test
     public void mapEdgesAreSurroundedByWalls() {
         Square[][] map = mh.createNewMap(player);
@@ -97,6 +97,59 @@ public class MapHandlerTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void allObjectsAndCreaturesOnMapReferToTheCorrectSquare() {
+        Square[][] map = mh.createNewMap(player);
+        for (Square[] squares : map) {
+            for (Square square : squares) {
+                if (square.getObjectOnSquare() != null) {
+                    assertEquals(square, square.getObjectOnSquare().getSquare());
+                }
+                if (square.getCreatureOnSquare() != null) {
+                    assertEquals(square, square.getCreatureOnSquare().getSquare());
+                }
+            }
+        }
+    }
+
+    @Test
+    public void mapAlwaysHasAPlayer() {
+        Square[][] map = mh.createNewMap(player);
+        boolean playerExists = false;
+        for (int i = 0; i < 30; i++) {
+            map = mh.createNewMap(player);
+            for (Square[] row : map) {
+                for (Square square : row) {
+                    if (square.getCreatureOnSquare() != null) {
+                        if (square.getCreatureOnSquare().isPlayer()) {
+                            playerExists = true;
+                        }
+                    }
+                }
+            }
+        }
+        assertTrue(playerExists);
+    }
+
+    @Test
+    public void mapAlwaysHasStairs() {
+        Square[][] map = mh.createNewMap(player);
+        boolean stairsExists = false;
+        for (int i = 0; i < 30; i++) {
+            map = mh.createNewMap(player);
+            for (Square[] row : map) {
+                for (Square square : row) {
+                    if (square.getObjectOnSquare() != null) {
+                        if (square.getObjectOnSquare().getName().equals("stairs")) {
+                            stairsExists = true;
+                        }
+                    }
+                }
+            }
+        }
+        assertTrue(stairsExists);
     }
 
     private int countCreaturesOnMap(Square[][] map) {

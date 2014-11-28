@@ -14,9 +14,9 @@ import javax.swing.WindowConstants;
 
 /**
  * This class encapsulates the JFrame containing the UI of the game.
+ *
  * @author Keke
  */
-
 public class UserInterface implements Runnable {
 
     private JFrame frame;
@@ -64,8 +64,12 @@ public class UserInterface implements Runnable {
      * beginning of each turn.
      */
     public void update() {
-        graphicsHandler.repaint();
-        statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());
+        if (graphicsHandler != null) {
+            graphicsHandler.repaint();
+        }
+        if (statusText != null) {
+            statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());
+        }
     }
 
 }
