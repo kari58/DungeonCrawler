@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -23,10 +24,14 @@ import javax.swing.JPanel;
 public class GraphicsHandler extends JPanel {
 
     private Map map;
+    private HashMap<String, BufferedImage> spriteBuffer;
 
-    public GraphicsHandler(Map map) {
+    public GraphicsHandler(Map map) throws IOException {
         super.setBackground(Color.WHITE);
         this.map = map;
+        spriteBuffer = new HashMap<>();
+        BufferedImage defaultImage = ImageIO.read(new File("images\\default.jpg"));
+        spriteBuffer.put("default", defaultImage);
     }
 
     /**
@@ -51,18 +56,23 @@ public class GraphicsHandler extends JPanel {
                 } else {
                     path = square.getSpritePath();
                 }
+                BufferedImage bufferedImage = spriteBuffer.get("default");
+                if (spriteBuffer.containsKey(path)) {
+                    bufferedImage = spriteBuffer.get(path);
+                } else {
+                    try {
+                        Image image = ImageIO.read(new File(path));
+                        bufferedImage = graphicsConfiguration.createCompatibleImage(image.getWidth(null), image.getHeight(null));
+                        Graphics tempGraphics = bufferedImage.getGraphics();
+                        tempGraphics.drawImage(image, 0, 0, null);
+                        tempGraphics.dispose();
+                        spriteBuffer.put(path, bufferedImage);
 
-                try {
-                    Image image = ImageIO.read(new File(path));
-                    BufferedImage bufferedImage = graphicsConfiguration.createCompatibleImage(image.getWidth(null), image.getHeight(null));
-                    Graphics tempGraphics = bufferedImage.getGraphics();
-                    tempGraphics.drawImage(image, 0, 0, null);
-                    tempGraphics.dispose();
-                    g.drawImage(bufferedImage, square.getX() * 30, square.getY() * 30, null);
-
-                } catch (IOException ex) {
-                    Logger.getLogger(GraphicsHandler.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(GraphicsHandler.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                g.drawImage(bufferedImage, square.getX() * 30, square.getY() * 30, null);
             }
         }
     }
