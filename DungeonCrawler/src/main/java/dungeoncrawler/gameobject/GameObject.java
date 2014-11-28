@@ -1,9 +1,6 @@
 package dungeoncrawler.gameobject;
 
 import dungeoncrawler.map.Square;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 
 /**
  * This abstract class contains information and services common to all game
@@ -45,30 +42,5 @@ public abstract class GameObject {
     public Square getSquare() {
         return square;
     }
-    
-    
-    /**
-     * This method draws a 30x30 pixel representation of the game object, which
-     * by default is a mono-color square. The color of the square is determined
-     * by the game object class.
-     * 
-     * @param g Graphics object required by Swing for drawing
-     *//*
-    public void draw(Graphics g) {
-        int x = this.getSquare().getX();
-        int y = this.getSquare().getY();
-        g.setColor(color);
-        g.fillRect(x * 30, y * 30, 30, 30);
-        
-    }
-    
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    
-    public Color getColor() {
-        return color;
-    }*/
-    
 
 }

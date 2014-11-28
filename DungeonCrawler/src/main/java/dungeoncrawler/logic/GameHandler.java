@@ -1,10 +1,8 @@
 package dungeoncrawler.logic;
 
-import dungeoncrawler.logic.ActionHandler;
 import dungeoncrawler.ui.UserInterface;
 import dungeoncrawler.map.Map;
 import dungeoncrawler.gameobject.creature.Player;
-import java.awt.event.KeyEvent;
 import javax.swing.SwingUtilities;
 
 /**

@@ -6,7 +6,6 @@ package dungeoncrawler.gameobject.creature;
  *
  */
 import dungeoncrawler.gameobject.GameObject;
-import java.awt.Color;
 
 public abstract class Creature extends GameObject {
 

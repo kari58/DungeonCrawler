@@ -5,6 +5,9 @@ import dungeoncrawler.map.Map;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
@@ -42,7 +45,11 @@ public class UserInterface implements Runnable {
 
     private void createComponents(Container container) {
         container.setLayout(new BorderLayout());
-        graphicsHandler = new GraphicsHandler(map);
+        try {
+            graphicsHandler = new GraphicsHandler(map);
+        } catch (IOException ex) {
+            Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         container.add(graphicsHandler);
         statusText = new JLabel();
         statusText.setText("Health: " + gameHandler.getPlayer().getCurrentHealth());

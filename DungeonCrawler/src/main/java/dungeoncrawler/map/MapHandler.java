@@ -1,7 +1,6 @@
 package dungeoncrawler.map;
 
 import dungeoncrawler.gameobject.creature.Creature;
-import dungeoncrawler.gameobject.creature.NPC;
 import dungeoncrawler.gameobject.creature.Player;
 import dungeoncrawler.gameobject.Wall;
 import dungeoncrawler.gameobject.Stairs;

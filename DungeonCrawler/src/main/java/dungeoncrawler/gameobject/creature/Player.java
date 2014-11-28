@@ -1,7 +1,5 @@
 package dungeoncrawler.gameobject.creature;
 
-import java.awt.Color;
-
 /**
  * This class represents the player within the game. Only one player object
  * should exist within the game at a time.

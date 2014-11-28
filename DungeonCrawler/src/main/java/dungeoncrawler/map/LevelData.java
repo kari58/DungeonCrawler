@@ -10,9 +10,15 @@ package dungeoncrawler.map;
 public class LevelData {
 
     private int currentLevel;
+    private int maxMonsters;
+    private int levelMaxSizeX;
+    private int levelMaxSizeY;
 
     public LevelData() {
         this.currentLevel = 0;
+        maxMonsters = 20;
+        levelMaxSizeX = 30;
+        levelMaxSizeY = 30;
     }
 
     /**
@@ -30,12 +36,12 @@ public class LevelData {
     /**
      * Returns the number of monsters that should be generated on the current
      * level. The number of monsters should increase by 2 per level, up to a
-     * maximum of 20.
+     * maximum specified in maxMonsters variable.
      * 
      * @return The number of monsters to be generated for the level
      */
     public int getNumberOfMonstersOnLevel() {
-        return Math.max(2, Math.min(20, currentLevel * 2));
+        return Math.max(2, Math.min(maxMonsters, currentLevel * 2));
     }
 
     /**
@@ -51,22 +57,22 @@ public class LevelData {
 
     /**
      * Returns the X-dimension size of the current level. The size should be
-     * 10 + the current level counter, with a cap of 30.
+     * 10 + the current level counter up to a limit specified in levelMaxSizeX.
      * 
      * @return the X-dimension size of the current level
      */
     public int getLevelSizeX() {
-        return Math.max(5, Math.min(30, 10 + currentLevel));
+        return Math.max(5, Math.min(levelMaxSizeX, 10 + currentLevel));
     }
 
     /**
      * Returns the Y-dimension size of the current level. The size should be
-     * 10 + the current level counter, with a cap of 30.
+     * 10 + the current level counter up to a limit specified in levelMaxSizeY.
      * 
      * @return The Y-dimension size of the current level
      */
     public int getLevelSizeY() {
-        return Math.max(5, Math.min(30, 10 + currentLevel));
+        return Math.max(5, Math.min(levelMaxSizeY, 10 + currentLevel));
     }
 
 }

@@ -2,7 +2,6 @@ package dungeoncrawler.map;
 
 import dungeoncrawler.gameobject.creature.Creature;
 import dungeoncrawler.gameobject.creature.NPC;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
