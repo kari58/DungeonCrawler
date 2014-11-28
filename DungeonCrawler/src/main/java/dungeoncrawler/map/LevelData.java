@@ -1,11 +1,11 @@
 package dungeoncrawler.map;
 
 /**
- * This class contains all data on levels, ie. how many monsters a level
- * contains, the size of a level, the difficulty of monsters within the level
- * etc. The class is only used by MapHandler which generates levels.
+ * This class contains all data on what a map level consists of. The class
+ * describes how many monsters a level contains, the size of a level, the
+ * difficulty of monsters within the level and any other information that
+ * affects the makeup of a level.
  *
- * @author Keke
  */
 public class LevelData {
 
@@ -37,7 +37,7 @@ public class LevelData {
      * Returns the number of monsters that should be generated on the current
      * level. The number of monsters should increase by 2 per level, up to a
      * maximum specified in maxMonsters variable.
-     * 
+     *
      * @return The number of monsters to be generated for the level
      */
     public int getNumberOfMonstersOnLevel() {
@@ -46,9 +46,9 @@ public class LevelData {
 
     /**
      * Determines the difficulty multiplier as monsters get tougher each level.
-     * The difficulty multiplier can be used to multiply monsters' base stats
-     * to obtain tougher monsters each level.
-     * 
+     * The difficulty multiplier can be used to multiply monsters' base stats to
+     * obtain tougher monsters each level.
+     *
      * @return The difficulty multiplier for the current map level.
      */
     public float getMonsterDifficultyMultiplier() {
@@ -56,9 +56,9 @@ public class LevelData {
     }
 
     /**
-     * Returns the X-dimension size of the current level. The size should be
-     * 10 + the current level counter up to a limit specified in levelMaxSizeX.
-     * 
+     * Returns the X-dimension size of the current level. The size should be 10
+     * + the current level counter up to a limit specified in levelMaxSizeX.
+     *
      * @return the X-dimension size of the current level
      */
     public int getLevelSizeX() {
@@ -66,9 +66,9 @@ public class LevelData {
     }
 
     /**
-     * Returns the Y-dimension size of the current level. The size should be
-     * 10 + the current level counter up to a limit specified in levelMaxSizeY.
-     * 
+     * Returns the Y-dimension size of the current level. The size should be 10
+     * + the current level counter up to a limit specified in levelMaxSizeY.
+     *
      * @return The Y-dimension size of the current level
      */
     public int getLevelSizeY() {

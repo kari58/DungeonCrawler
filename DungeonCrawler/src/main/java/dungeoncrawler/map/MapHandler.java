@@ -27,7 +27,15 @@ public class MapHandler {
      * This method generates a new map consisting of Square objects. Each time
      * this method is called, the level counter is incremented by one. Each
      * subsequent call of this method increases the level difficulty. The method
-     * should be called only once per map level.
+     * should be called only once per map level.<br>
+     * The map generated using this method will be bordered by walls, will
+     * contain the player and one set of stairs, as well as randomly generated
+     * monsters.<br>
+     * Monsters are generated with random stats using the MonsterGenerator and
+     * LevelData classes.<br>
+     * Each call of this method will increase the map level counter by one.
+     * Details on the effect of level increases are described in the LevelData
+     * class.
      *
      * @param player reference to the player object so that the player can be
      * added to the map
@@ -100,7 +108,6 @@ public class MapHandler {
         return squares.get(rng.nextInt(squares.size()));
     }
 
-    
     private Square[][] initMap(int sizeX, int sizeY) {
         Square[][] newMap = new Square[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {

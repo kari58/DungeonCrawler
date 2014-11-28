@@ -8,7 +8,8 @@ import java.util.Random;
 
 /**
  * This class provides various utilities for interpreting relationships between
- * different squares on the map.
+ * different squares on the map. The services here can be used to help implement
+ * AI.
  */
 public class MapUtils {
 
@@ -95,7 +96,7 @@ public class MapUtils {
             }
         }
         return squares;
-    } 
+    }
 
     /**
      * This method examines whether a square can be moved into. A square is

@@ -3,11 +3,16 @@ package dungeoncrawler.logic;
 import dungeoncrawler.ui.UserInterface;
 import dungeoncrawler.map.Map;
 import dungeoncrawler.gameobject.creature.Player;
+import java.awt.event.KeyEvent;
 import javax.swing.SwingUtilities;
 
 /**
- * This class contains the logic for running the game loop at the highest level.
- * The class also functions as a hub which contains all the major game components.
+ * The purpose of this class is to function as a hub which links together all
+ * game elements. All other game objects should be accessible through this
+ * class. It also implements high-level logic for running the game on each turn.
+ * The class does not implement specific actions, but directs the use of other
+ * classes for each turn.
+ *
  */
 public class GameHandler {
 
@@ -40,25 +45,46 @@ public class GameHandler {
         gameHasEnded = true;
     }
 
+    /**
+     * Returns true if the game has ended. Can be used to check if input should
+     * still be listened to.
+     *
+     * @return true if game has ended, false if not
+     */
     public boolean gameHasEnded() {
         return gameHasEnded;
     }
-    
+
+    /**
+     * Requests the Map to update for a new level and asks UI to re-draw. Should
+     * be called once whenever entering a new map.
+     */
     public void enterNewLevel() {
         map.updateMapForNewLevel(player);
         ui.update();
     }
-    
+
     /**
-     * This method is called whenever the player presses a key. If the game has
-     * not ended, a request to handle player action is passed to the Action
-     * Handler. If a player action was taken, the Action Handler is requested
-     * to handle actions for all NPCs, and the UI is updated.
+     * This method should be called whenever the player presses a key. No action
+     * should be taken if the game has ended. If the player presses Enter to use
+     * stairs, he will be moved through the stairs if possible, but no NPC
+     * action is taken. If the player makes a valid directional move, NPCs will
+     * also take their turn. If no valid action is taken, NPCs will not take
+     * action either.
+     *
      * @param e The KeyEvent corresponding to the button pressed by the player
      */
     public void handleMovement(int e) {
         if (gameHasEnded) {
             return;
+        }
+        if (e == KeyEvent.VK_ENTER) {
+            if (actionHandler.useStairs()) {
+                enterNewLevel();
+                return;
+            } else {
+                return;
+            }
         }
         if (!actionHandler.handlePlayerMove(e)) {
             return;
@@ -70,7 +96,7 @@ public class GameHandler {
     public Player getPlayer() {
         return player;
     }
-    
+
     public ActionHandler getActionHandler() {
         return actionHandler;
     }

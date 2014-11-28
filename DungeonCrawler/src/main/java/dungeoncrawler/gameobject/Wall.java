@@ -5,7 +5,6 @@ package dungeoncrawler.gameobject;
  * occupies one square and larger walls are constructed from individual wall
  * objects.
  *
- * @author Keke
  */
 public class Wall extends GameObject {
 
