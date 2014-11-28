@@ -22,4 +22,8 @@
 
 24.11.2014: 15:30 - 18:30 Koodausta ja lisää testejä 3h
 
+28.11.2014: 16:00 - 19:00 Koodausta, graafisen käyttöliittymän muokkausta
+
+28.11.2014: 20:00 -  Sekvenssikaavioiden teko
+
 Yhteensä: 29h

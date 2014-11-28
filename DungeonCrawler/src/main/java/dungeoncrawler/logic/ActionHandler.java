@@ -31,8 +31,8 @@ public class ActionHandler {
     }
 
     /**
-     * This method attempts to handle the player's move action which happens
-     * when the player presses a key. The player will attempt to move to an
+     * This method attempts to handle the player's move action based on the 
+     * integer-value keycode parameter. The player will attempt to move to an
      * adjacent square depending on which arrow key was pressed. If the square
      * contains another creature, the player will attack it. If it contains no
      * objects which block movement, the player will move to the square. If it
@@ -45,30 +45,20 @@ public class ActionHandler {
      */
     public boolean handlePlayerMove(int e) {
         if (e == KeyEvent.VK_ENTER) {
-            if (player.getSquare().getObjectOnSquare() != null) {
-                if (player.getSquare().getObjectOnSquare().getName().equals("stairs")) {
-                    gameHandler.enterNewLevel();
-                }
-            }
+            useStairs();
+            return false;
+        } 
+        Square targetSquare = getTargetSquareForMove(e);
+        if (targetSquare == null) {
             return false;
         }
-        int playerX = player.getSquare().getX();
-        int playerY = player.getSquare().getY();
-        int dX = 0;
-        int dY = 0;
-        if (e == KeyEvent.VK_LEFT) {
-            dX -= 1;
-        } else if (e == KeyEvent.VK_RIGHT) {
-            dX += 1;
-        } else if (e == KeyEvent.VK_UP) {
-            dY -= 1;
-        } else if (e == KeyEvent.VK_DOWN) {
-            dY += 1;
+        if (attemptToMoveToSquare(targetSquare)) {
+            return true;
         }
-        if (playerX + dX < 0 || playerX + dX > map.getWidth() - 1 || playerY + dY < 0 || playerY + dY > map.getHeight() - 1) {
-            return false;
-        }
-        Square targetSquare = map.getMap()[playerX + dX][playerY + dY];
+        return false;
+    }
+    
+    private boolean attemptToMoveToSquare(Square targetSquare) {
         Creature targetCreature = targetSquare.getCreatureOnSquare();
         if (!movementUtils.squareIsMovable(targetSquare) && targetCreature == null) {
             return false;
@@ -80,6 +70,45 @@ public class ActionHandler {
             moveCreature(player, targetSquare);
         }
         return true;
+    }
+    
+    private Square getTargetSquareForMove(int e) {
+        int playerX = player.getSquare().getX();
+        int playerY = player.getSquare().getY();
+        int dX = getDX(e);
+        int dY = getDY(e);
+        if (playerX + dX < 0 || playerX + dX > map.getWidth() - 1 || playerY + dY < 0 || playerY + dY > map.getHeight() - 1) {
+            return null;
+        }
+        return map.getMap()[playerX + dX][playerY + dY];
+    }
+    
+    private int getDX(int e) {
+        int dX = 0;
+        if (e == KeyEvent.VK_LEFT) {
+            dX -= 1;
+        } else if (e == KeyEvent.VK_RIGHT) {
+            dX += 1;
+        }
+        return dX;
+    }
+    
+    private int getDY(int e) {
+        int dY = 0;
+        if (e == KeyEvent.VK_UP) {
+            dY -= 1;
+        } else if (e == KeyEvent.VK_DOWN) {
+            dY += 1;
+        }
+        return dY;
+    }
+
+    private void useStairs() {
+        if (player.getSquare().getObjectOnSquare() != null) {
+            if (player.getSquare().getObjectOnSquare().getName().equals("stairs")) {
+                gameHandler.enterNewLevel();
+            }
+        }
     }
 
     /**
