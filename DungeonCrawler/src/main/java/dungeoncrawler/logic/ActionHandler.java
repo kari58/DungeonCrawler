@@ -75,7 +75,9 @@ public class ActionHandler {
             return false;
         }
         if (targetCreature != null) {
-            attackCreature(player, targetCreature);
+            if (!targetCreature.isPlayer()) {
+                attackCreature(player, targetCreature);
+            }            
         }
         if (targetCreature == null) {
             moveCreature(player, targetSquare);
