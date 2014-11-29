@@ -22,8 +22,10 @@
 
 24.11.2014: 15:30 - 18:30 Koodausta ja lisää testejä 3h
 
-28.11.2014: 16:00 - 19:00 Koodausta, graafisen käyttöliittymän muokkausta
+28.11.2014: 16:00 - 19:00 Koodausta, graafisen käyttöliittymän muokkausta 3h
 
-28.11.2014: 20:00 -  Sekvenssikaavioiden teko, refaktorointia, lisää testejä
+28.11.2014: 20:00 -  24:00 Sekvenssikaavioiden teko, refaktorointia, lisää testejä 4h
 
-Yhteensä: 29h
+29.11.2014: 16:00 - 17:00 grafiikoiden muokkausta, pikkumuutoksia koodiin 1h
+
+Yhteensä: 39,5h

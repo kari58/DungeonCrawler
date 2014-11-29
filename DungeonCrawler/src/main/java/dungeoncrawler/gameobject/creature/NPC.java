@@ -12,6 +12,7 @@ public class NPC extends Creature {
 
     private boolean isHostile;
     private int aggroRadius;
+    private boolean usingCustomSprite;
 
     private double chanceToMoveRandomly;
     
@@ -20,6 +21,7 @@ public class NPC extends Creature {
         this.isHostile = isHostile;
         this.aggroRadius = 2;
         this.chanceToMoveRandomly = 0.5;
+        this.usingCustomSprite = false;
     }
 
 
@@ -45,9 +47,23 @@ public class NPC extends Creature {
     public int getAggroRadius() {
         return aggroRadius;
     }
+    
+    public void useCustomSprite(String spritePath) {
+        usingCustomSprite = true;
+        setSpritePath(spritePath);
+    }
 
     public void setHostileStatus(boolean hostileStatus) {
         this.isHostile = hostileStatus;
+        if (usingCustomSprite) {
+            return;
+        }
+        if (hostileStatus == true) {
+            super.setSpritePath("images\\angryNPC.jpg");
+        }
+        else {
+            super.setSpritePath("images\\neutralNPC.jpg");
+        }        
     }
 
     public boolean isHostile() {
@@ -66,8 +82,7 @@ public class NPC extends Creature {
     public void takeDamage(int damage) {
         super.takeDamage(damage);
         if (!isHostile) {
-            this.isHostile = true;
-            super.setSpritePath("images\\redSquare.jpg");
+            setHostileStatus(true);
         }
     }
 

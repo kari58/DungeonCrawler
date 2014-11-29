@@ -78,6 +78,16 @@ public class GameHandler {
         if (gameHasEnded) {
             return;
         }
+        int[] validMoves = {KeyEvent.VK_ENTER, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT};
+        boolean moveIsValid = false;
+        for (int i = 0; i < validMoves.length; i++) {
+            if (validMoves[i] == e) {
+                moveIsValid = true;
+            }
+        }
+        if (!moveIsValid) {
+            return;
+        }
         if (e == KeyEvent.VK_ENTER) {
             if (actionHandler.useStairs()) {
                 enterNewLevel();

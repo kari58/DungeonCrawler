@@ -19,7 +19,7 @@ public class Player extends Creature {
         super.setDamage(40);
         level = 1;
         xp = 0;
-        super.setSpritePath("images\\greenSquare.jpg");
+        super.setSpritePath("images\\player.jpg");
     }
     
     /**

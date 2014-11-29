@@ -55,12 +55,7 @@ public class MonsterGenerator {
         int monsterHealth = (int) ((rng.nextInt(51) + 50) * difficultymultiplier);
         int monsterDamage = (int) ((rng.nextInt(5) + 6) * difficultymultiplier);
         double chanceToMoveRandomly = Math.max(0.3, Math.min(0.9, rng.nextDouble()));
-        String spritePath = "images\\redSquare.jpg";
-        if (!isHostile) {
-            spritePath = "images\\yellowSquare.jpg";
-        }
         NPC monster = new NPC(name, isHostile);
-        monster.setSpritePath(spritePath);
         monster.setChanceToMoveRandomly(chanceToMoveRandomly);
         monster.setHostileStatus(isHostile);
         monster.setAggroRadius(aggroRadius);
